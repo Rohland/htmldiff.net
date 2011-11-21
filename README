@@ -1,0 +1,11 @@
+Project Description
+========
+A library for comparing two HTML files/snippets and highlighting the differences using simple HTML.
+
+
+This HTML Diff implementation is a C# port of the ruby implementation found here: https://github.com/myobie/htmldiff
+
+Usage
+========
+
+I have put together a blog post covering how to use the library here (http://www.rohland.co.za/index.php/2009/10/31/csharp-html-diff-algorithm/). Also, a demo web application project is provided with the solution.
