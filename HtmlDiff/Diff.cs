@@ -268,14 +268,14 @@ namespace Helpers
                     break;
                 }
 
-                var nonTags = ExtractConsecutiveWords(words, x => !this.IsTag(x));
+                var nonTags = ExtractConsecutiveWords(words, x => !IsTag(x));
 
                 string specialCaseTagInjection = string.Empty;
                 bool specialCaseTagInjectionIsBefore = false;
 
                 if (nonTags.Length != 0)
                 {
-                    string text = this.WrapText(string.Join("", nonTags), tag, cssClass);
+                    string text = WrapText(string.Join("", nonTags), tag, cssClass);
 
                     this.content.Append(text);
                 }
@@ -310,18 +310,13 @@ namespace Helpers
 
                 if (specialCaseTagInjectionIsBefore)
                 {
-                    this.content.Append(specialCaseTagInjection + String.Join("", this.ExtractConsecutiveWords(words, x => this.IsTag(x))));
+                    this.content.Append(specialCaseTagInjection + String.Join("", this.ExtractConsecutiveWords(words, x => IsTag(x))));
                 }
                 else
                 {
-                    this.content.Append(String.Join("", this.ExtractConsecutiveWords(words, x => this.IsTag(x))) + specialCaseTagInjection);
+                    this.content.Append(String.Join("", this.ExtractConsecutiveWords(words, x => IsTag(x))) + specialCaseTagInjection);
                 }
             }
-        }
-
-        private string WrapText(string text, string tagName, string cssClass)
-        {
-            return string.Format("<{0} class='{1}'>{2}</{0}>", tagName, cssClass, text);
         }
 
         private string[] ExtractConsecutiveWords(List<string> words, Func<string, bool> condition)
@@ -355,23 +350,6 @@ namespace Helpers
                 return items;
             }
         }
-
-        private bool IsTag(string item)
-        {            
-            bool isTag = IsOpeningTag(item) || IsClosingTag(item);
-            return isTag;
-        }
-
-        private bool IsOpeningTag(string item)
-        {
-            return Regex.IsMatch(item, "^\\s*<[^>]+>\\s*$");
-        }
-
-        private bool IsClosingTag(string item)
-        {
-            return Regex.IsMatch(item, "^\\s*</[^>]+>\\s*$");
-        }
-
 
         private List<Operation> Operations()
         {
@@ -518,6 +496,27 @@ namespace Helpers
             }
 
             return bestMatchSize != 0 ? new Match(bestMatchInOld, bestMatchInNew, bestMatchSize) : null;
+        }
+
+        private static string WrapText(string text, string tagName, string cssClass)
+        {
+            return string.Format("<{0} class='{1}'>{2}</{0}>", tagName, cssClass, text);
+        }
+
+        private static bool IsTag(string item)
+        {
+            bool isTag = IsOpeningTag(item) || IsClosingTag(item);
+            return isTag;
+        }
+
+        private static bool IsOpeningTag(string item)
+        {
+            return Regex.IsMatch(item, "^\\s*<[^>]+>\\s*$");
+        }
+
+        private static bool IsClosingTag(string item)
+        {
+            return Regex.IsMatch(item, "^\\s*</[^>]+>\\s*$");
         }
 
     }
