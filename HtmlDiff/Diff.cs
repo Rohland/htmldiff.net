@@ -72,8 +72,8 @@ namespace Helpers
 
         private void SplitInputsToWords()
         {
-            this.oldWords = ConvertHtmlToListOfWords(this.Explode(this.oldText));
-            this.newWords = ConvertHtmlToListOfWords(this.Explode(this.newText));
+            this.oldWords = ConvertHtmlToListOfWords(Explode(this.oldText));
+            this.newWords = ConvertHtmlToListOfWords(Explode(this.newText));
         }
 
         private string[] ConvertHtmlToListOfWords(string[] characterString)
@@ -88,7 +88,7 @@ namespace Helpers
                 {
                     case Mode.character:
 
-                        if (this.IsStartOfTag(character))
+                        if (IsStartOfTag(character))
                         {
                             if (current_word != String.Empty)
                             {
@@ -115,7 +115,7 @@ namespace Helpers
                         break;
                     case Mode.tag:
 
-                        if (this.IsEndOfTag(character))
+                        if (IsEndOfTag(character))
                         {
                             current_word += ">";
                             words.Add(current_word);
@@ -138,7 +138,7 @@ namespace Helpers
                         break;
                     case Mode.whitespace:
 
-                        if (this.IsStartOfTag(character))
+                        if (IsStartOfTag(character))
                         {
                             if (current_word != String.Empty)
                             {
@@ -175,26 +175,6 @@ namespace Helpers
             }
 
             return words.ToArray();
-        }
-
-        private bool IsStartOfTag(string val)
-        {
-            return val == "<";
-        }
-
-        private bool IsEndOfTag(string val)
-        {
-            return val == ">";
-        }
-
-        private bool IsWhiteSpace(string value)
-        {
-            return Regex.IsMatch(value, "\\s");
-        }
-
-        private string[] Explode(string value)
-        {
-            return Regex.Split(value, "");
         }
 
         private void PerformOperation(Operation operation)
@@ -517,6 +497,26 @@ namespace Helpers
         private static bool IsClosingTag(string item)
         {
             return Regex.IsMatch(item, "^\\s*</[^>]+>\\s*$");
+        }
+
+        private static bool IsStartOfTag(string val)
+        {
+            return val == "<";
+        }
+
+        private static bool IsEndOfTag(string val)
+        {
+            return val == ">";
+        }
+
+        private static bool IsWhiteSpace(string value)
+        {
+            return Regex.IsMatch(value, "\\s");
+        }
+
+        private static string[] Explode(string value)
+        {
+            return Regex.Split(value, "");
         }
 
     }
