@@ -1,0 +1,27 @@
+﻿table {
+    border:1px solid #d9d9d9;
+}
+
+td {
+    border:1px solid #d9d9d9;
+    padding:3px;
+}
+
+/* ***************************************
+** Diff related styles
+*****************************************/
+
+ins {
+	background-color: #cfc;
+	text-decoration:inherit;
+
+}
+
+del {
+	color: #999;
+	background-color:#FEC8C8;
+}
+
+ins.mod {
+    background-color: #FFE1AC;
+}
