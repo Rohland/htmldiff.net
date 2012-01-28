@@ -9,6 +9,10 @@ namespace Helpers
 {
     public class HtmlDiff
     {
+        public static string Execute(string oldText, string newText)
+        {
+            return new HtmlDiff(oldText, newText).Build();
+        }
 
         private StringBuilder content;
         private string oldText, newText;
@@ -98,7 +102,7 @@ namespace Helpers
                             current_word = "<";
                             mode = Mode.tag;
                         }
-                        else if (Regex.IsMatch(character, "\\s"))
+                        else if (Regex.IsMatch(character, "[^A-Za-z0-9]"))
                         {
                             if (current_word != String.Empty)
                             {
@@ -516,7 +520,7 @@ namespace Helpers
 
         private static string[] Explode(string value)
         {
-            return Regex.Split(value, "");
+            return Regex.Split(value, @"");
         }
 
     }
