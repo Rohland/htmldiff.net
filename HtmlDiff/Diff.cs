@@ -102,7 +102,7 @@ namespace Helpers
                             current_word = "<";
                             mode = Mode.tag;
                         }
-                        else if (Regex.IsMatch(character, "[^A-Za-z0-9]"))
+                        else if (Regex.IsMatch(character, @"\s", RegexOptions.ECMAScript))
                         {
                             if (current_word != String.Empty)
                             {
@@ -111,9 +111,17 @@ namespace Helpers
                             current_word = character;
                             mode = Mode.whitespace;
                         }
-                        else
+                        else if (Regex.IsMatch(character, @"[\w\#@]+", RegexOptions.IgnoreCase | RegexOptions.ECMAScript))
                         {
                             current_word += character;
+                        }
+                        else
+                        {
+                            if (current_word != String.Empty)
+                            {
+                                words.Add(current_word);
+                            }
+                            current_word = character;
                         }
 
                         break;

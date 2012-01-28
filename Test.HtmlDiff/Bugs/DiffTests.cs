@@ -11,7 +11,7 @@ namespace Test.HtmlDiff.Bugs
     {
         // https://github.com/Rohland/htmldiff.net/issues/3
         [Test]
-        public void Build_NonAlphaNumericAdjoinedToWordDiff_PrefixIsNotIncludedInDiff()
+        public void Execute_NonAlphaNumericAdjoinedToWordDiff_PrefixIsNotIncludedInDiff()
         {
             var oldText = "The Dealer.";
             var newText = "The Dealer info,";
