@@ -62,6 +62,12 @@ namespace Helpers
             {
                 string word = this.newWords[i];
 
+                // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
+                if (IsTag(word))
+                {
+                    word = StripTagAttributes(word);
+                }
+
                 if (this.wordIndices.ContainsKey(word))
                 {
                     this.wordIndices[word].Add(i);
@@ -72,6 +78,13 @@ namespace Helpers
                     this.wordIndices[word].Add(i);
                 }
             }
+        }
+
+        private static string StripTagAttributes(string word)
+        {
+            var tag = Regex.Match(word, @"<[^\s>]+", RegexOptions.None).Value;
+            word = tag + (word.EndsWith("/>") ? "/>" : ">");
+            return word;
         }
 
         private void SplitInputsToWords()
@@ -453,6 +466,11 @@ namespace Helpers
                 var newMatchLengthAt = new Dictionary<int, int>();
 
                 string index = this.oldWords[indexInOld];
+
+                if (IsTag(index)) // strip attributes as this is not supported (yet)
+                {
+                    index = StripTagAttributes(index);
+                }
 
                 if (!this.wordIndices.ContainsKey(index))
                 {
