@@ -14,6 +14,11 @@ namespace Helpers
             return new HtmlDiff(oldText, newText).Build();
         }
 
+        public string Build(string oldText, string newText)
+        {
+            return new HtmlDiff(oldText, newText).Build();
+        }
+
         private StringBuilder content;
         private string oldText, newText;
         private string[] oldWords, newWords;
