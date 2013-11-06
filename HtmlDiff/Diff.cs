@@ -14,7 +14,7 @@ namespace HtmlDiff
 
         private readonly string[] _specialCaseClosingTags = { "</strong>", "</b>", "</i>", "</big>", "</small>", "</u>", "</sub>", "</sup>", "</strike>", "</s>" };
         private readonly string[] _specialCaseOpeningTags = { "<strong[\\>\\s]+", "<b[\\>\\s]+", "<i[\\>\\s]+", "<big[\\>\\s]+", "<small[\\>\\s]+", "<u[\\>\\s]+", "<sub[\\>\\s]+", "<sup[\\>\\s]+", "<strike[\\>\\s]+", "<s[\\>\\s]+" };
-        private static readonly string[] SpecialCaseWordTags = { "<img[\\>\\s]+" };
+        private static readonly string[] SpecialCaseWordTags = { "<img" };
 
         private string[] _newWords;
         private string[] _oldWords;
