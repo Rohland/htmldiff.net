@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Helpers;
 
 namespace Demo
 {
@@ -29,7 +28,7 @@ namespace Demo
                                 </table>
                                 Here is a number 2 <sup>32</sup>";
 
-            HtmlDiff diffHelper = new HtmlDiff(oldText, newText);
+            HtmlDiff.HtmlDiff diffHelper = new HtmlDiff.HtmlDiff(oldText, newText);
             litOldText.Text = oldText;
             litNewText.Text = newText;
             litDiffText.Text = diffHelper.Build();
