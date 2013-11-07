@@ -3,12 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Collections;
 
-namespace Helpers
+namespace HtmlDiff
 {
     public class HtmlDiff
     {
+        private readonly StringBuilder _content;
+        private readonly string _newText;
+        private readonly string _oldText;
+
+        private readonly string[] _specialCaseClosingTags = { "</strong>", "</b>", "</i>", "</big>", "</small>", "</u>", "</sub>", "</sup>", "</strike>", "</s>" };
+        private readonly string[] _specialCaseOpeningTags = { "<strong[\\>\\s]+", "<b[\\>\\s]+", "<i[\\>\\s]+", "<big[\\>\\s]+", "<small[\\>\\s]+", "<u[\\>\\s]+", "<sub[\\>\\s]+", "<sup[\\>\\s]+", "<strike[\\>\\s]+", "<s[\\>\\s]+" };
+        private static readonly string[] SpecialCaseWordTags = { "<img" };
+
+        private string[] _newWords;
+        private string[] _oldWords;
+        private Dictionary<string, List<int>> _wordIndices;
+
+
+        /// <summary>
+        ///     Initializes a new instance of the class.
+        /// </summary>
+        /// <param name="oldText">The old text.</param>
+        /// <param name="newText">The new text.</param>
+        public HtmlDiff(string oldText, string newText)
+        {
+            _oldText = oldText;
+            _newText = newText;
+
+            _content = new StringBuilder();
+        }
+
         public static string Execute(string oldText, string newText)
         {
             return new HtmlDiff(oldText, newText).Build();
@@ -19,53 +44,32 @@ namespace Helpers
             return new HtmlDiff(oldText, newText).Build();
         }
 
-        private StringBuilder content;
-        private string oldText, newText;
-        private string[] oldWords, newWords;
-        Dictionary<string, List<int>> wordIndices;
-        private string[] specialCaseOpeningTags = new string[] {"<strong[\\>\\s]+", "<b[\\>\\s]+", "<i[\\>\\s]+", "<big[\\>\\s]+", "<small[\\>\\s]+", "<u[\\>\\s]+", "<sub[\\>\\s]+", "<sup[\\>\\s]+", "<strike[\\>\\s]+", "<s[\\>\\s]+" };
-        private string[] specialCaseClosingTags = new string[] {"</strong>", "</b>", "</i>", "</big>", "</small>", "</u>", "</sub>", "</sup>", "</strike>", "</s>" };
-
-        
         /// <summary>
-        /// Initializes a new instance of the <see cref="Diff"/> class.
-        /// </summary>
-        /// <param name="oldText">The old text.</param>
-        /// <param name="newText">The new text.</param>
-        public HtmlDiff(string oldText, string newText)
-        {
-            this.oldText = oldText;
-            this.newText = newText;
-
-            this.content = new StringBuilder();
-        }
-
-        /// <summary>
-        /// Builds the HTML diff output
+        ///     Builds the HTML diff output
         /// </summary>
         /// <returns>HTML diff markup</returns>
         public string Build()
         {
-            this.SplitInputsToWords();
+            SplitInputsToWords();
 
-            this.IndexNewWords();
+            IndexNewWords();
 
-            var operations = this.Operations();
+            IEnumerable<Operation> operations = Operations();
 
-            foreach (var item in operations)
+            foreach (Operation item in operations)
             {
-                this.PerformOperation(item);
+                PerformOperation(item);
             }
 
-            return this.content.ToString();
+            return _content.ToString();
         }
 
         private void IndexNewWords()
-        {           
-            this.wordIndices = new Dictionary<string, List<int>>();
-            for (int i = 0; i < this.newWords.Length; i++)
+        {
+            _wordIndices = new Dictionary<string, List<int>>();
+            for (int i = 0; i < _newWords.Length; i++)
             {
-                string word = this.newWords[i];
+                string word = _newWords[i];
 
                 // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
                 if (IsTag(word))
@@ -73,135 +77,123 @@ namespace Helpers
                     word = StripTagAttributes(word);
                 }
 
-                if (this.wordIndices.ContainsKey(word))
+                if (_wordIndices.ContainsKey(word))
                 {
-                    this.wordIndices[word].Add(i);
+                    _wordIndices[word].Add(i);
                 }
                 else
                 {
-                    this.wordIndices[word] = new List<int>();
-                    this.wordIndices[word].Add(i);
+                    _wordIndices[word] = new List<int> {i};
                 }
             }
         }
 
         private static string StripTagAttributes(string word)
         {
-            var tag = Regex.Match(word, @"<[^\s>]+", RegexOptions.None).Value;
+            string tag = Regex.Match(word, @"<[^\s>]+", RegexOptions.None).Value;
             word = tag + (word.EndsWith("/>") ? "/>" : ">");
             return word;
         }
 
         private void SplitInputsToWords()
         {
-            this.oldWords = ConvertHtmlToListOfWords(Explode(this.oldText));
-            this.newWords = ConvertHtmlToListOfWords(Explode(this.newText));
+            _oldWords = ConvertHtmlToListOfWords(Explode(_oldText));
+            _newWords = ConvertHtmlToListOfWords(Explode(_newText));
         }
 
-        private string[] ConvertHtmlToListOfWords(string[] characterString)
+        private string[] ConvertHtmlToListOfWords(IEnumerable<string> characterString)
         {
-            Mode mode = Mode.character;
-            string current_word = String.Empty;
-            List<string> words = new List<string>();
+            var mode = Mode.Character;
+            string currentWord = String.Empty;
+            var words = new List<string>();
 
-            foreach (var character in characterString)
+            foreach (string character in characterString)
             {
                 switch (mode)
                 {
-                    case Mode.character:
+                    case Mode.Character:
 
                         if (IsStartOfTag(character))
                         {
-                            if (current_word != String.Empty)
+                            if (currentWord != String.Empty)
                             {
-                                words.Add(current_word);
+                                words.Add(currentWord);
                             }
 
-                            current_word = "<";
-                            mode = Mode.tag;
+                            currentWord = "<";
+                            mode = Mode.Tag;
                         }
                         else if (Regex.IsMatch(character, @"\s", RegexOptions.ECMAScript))
                         {
-                            if (current_word != String.Empty)
+                            if (currentWord != String.Empty)
                             {
-                                words.Add(current_word);
+                                words.Add(currentWord);
                             }
-                            current_word = character;
-                            mode = Mode.whitespace;
+                            currentWord = character;
+                            mode = Mode.Whitespace;
                         }
                         else if (Regex.IsMatch(character, @"[\w\#@]+", RegexOptions.IgnoreCase | RegexOptions.ECMAScript))
                         {
-                            current_word += character;
+                            currentWord += character;
                         }
                         else
                         {
-                            if (current_word != String.Empty)
+                            if (currentWord != String.Empty)
                             {
-                                words.Add(current_word);
+                                words.Add(currentWord);
                             }
-                            current_word = character;
+                            currentWord = character;
                         }
 
                         break;
-                    case Mode.tag:
+                    case Mode.Tag:
 
                         if (IsEndOfTag(character))
                         {
-                            current_word += ">";
-                            words.Add(current_word);
-                            current_word = "";
+                            currentWord += ">";
+                            words.Add(currentWord);
+                            currentWord = "";
 
-                            if (IsWhiteSpace(character))
-                            {
-                                mode = Mode.whitespace;
-                            }
-                            else
-                            {
-                                mode = Mode.character;
-                            }
+                            mode = IsWhiteSpace(character) ? Mode.Whitespace : Mode.Character;
                         }
                         else
                         {
-                            current_word += character;
+                            currentWord += character;
                         }
 
                         break;
-                    case Mode.whitespace:
+                    case Mode.Whitespace:
 
                         if (IsStartOfTag(character))
                         {
-                            if (current_word != String.Empty)
+                            if (currentWord != String.Empty)
                             {
-                                words.Add(current_word);
+                                words.Add(currentWord);
                             }
-                            current_word = "<";
-                            mode = Mode.tag;
+                            currentWord = "<";
+                            mode = Mode.Tag;
                         }
                         else if (Regex.IsMatch(character, "\\s"))
                         {
-                            current_word += character;
+                            currentWord += character;
                         }
                         else
                         {
-                            if (current_word != String.Empty)
+                            if (currentWord != String.Empty)
                             {
-                                words.Add(current_word);
+                                words.Add(currentWord);
                             }
 
-                            current_word = character;
-                            mode = Mode.character;
+                            currentWord = character;
+                            mode = Mode.Character;
                         }
 
                         break;
-                    default:
-                        break;
                 }
-
-
             }
-            if (current_word != string.Empty)
+            if (currentWord != string.Empty)
             {
-                words.Add(current_word);
+                words.Add(currentWord);
             }
 
             return words.ToArray();
@@ -211,60 +203,66 @@ namespace Helpers
         {
             switch (operation.Action)
             {
-                case Action.equal:
-                    this.ProcessEqualOperation(operation);
+                case Action.Equal:
+                    ProcessEqualOperation(operation);
                     break;
-                case Action.delete:
-                    this.ProcessDeleteOperation(operation, "diffdel");
+                case Action.Delete:
+                    ProcessDeleteOperation(operation, "diffdel");
                     break;
-                case Action.insert:
-                    this.ProcessInsertOperation(operation, "diffins");
+                case Action.Insert:
+                    ProcessInsertOperation(operation, "diffins");
                     break;
-                case Action.none:
+                case Action.None:
                     break;
-                case Action.replace:
-                    this.ProcessReplaceOperation(operation);
-                    break;
-                default:
+                case Action.Replace:
+                    ProcessReplaceOperation(operation);
                     break;
             }
         }
 
         private void ProcessReplaceOperation(Operation operation)
         {
-            this.ProcessDeleteOperation(operation, "diffmod");
-            this.ProcessInsertOperation(operation, "diffmod");
+            ProcessDeleteOperation(operation, "diffmod");
+            ProcessInsertOperation(operation, "diffmod");
         }
 
         private void ProcessInsertOperation(Operation operation, string cssClass)
         {
-            this.InsertTag("ins", cssClass, this.newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList());
+            InsertTag("ins", cssClass,
+                _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList());
         }
 
         private void ProcessDeleteOperation(Operation operation, string cssClass)
         {
-            var text = this.oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
-            this.InsertTag("del", cssClass, text);
+            List<string> text =
+                _oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
+            InsertTag("del", cssClass, text);
         }
 
         private void ProcessEqualOperation(Operation operation)
         {
-            var result = this.newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToArray();
-            this.content.Append(String.Join("", result));
+            string[] result =
+                _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToArray();
+            _content.Append(String.Join("", result));
         }
 
 
         /// <summary>
-        /// This method encloses words within a specified tag (ins or del), and adds this into "content", 
-        /// with a twist: if there are words contain tags, it actually creates multiple ins or del, 
-        /// so that they don't include any ins or del. This handles cases like
-        /// old: '<p>a</p>'
-        /// new: '<p>ab</p><p>c</b>'
-        /// diff result: '<p>a<ins>b</ins></p><p><ins>c</ins></p>'
-        /// this still doesn't guarantee valid HTML (hint: think about diffing a text containing ins or
-        /// del tags), but handles correctly more cases than the earlier version.
-        /// 
-        /// P.S.: Spare a thought for people who write HTML browsers. They live in this ... every day.
+        ///     This method encloses words within a specified tag (ins or del), and adds this into "content",
+        ///     with a twist: if there are words contain tags, it actually creates multiple ins or del,
+        ///     so that they don't include any ins or del. This handles cases like
+        ///     old: '<p>a</p>'
+        ///     new: '<p>ab</p>
+        ///     <p>
+        ///         c</b>'
+        ///         diff result: '<p>a<ins>b</ins></p>
+        ///         <p>
+        ///             <ins>c</ins>
+        ///         </p>
+        ///         '
+        ///         this still doesn't guarantee valid HTML (hint: think about diffing a text containing ins or
+        ///         del tags), but handles correctly more cases than the earlier version.
+        ///         P.S.: Spare a thought for people who write HTML browsers. They live in this ... every day.
         /// </summary>
         /// <param name="tag"></param>
         /// <param name="cssClass"></param>
@@ -278,7 +276,7 @@ namespace Helpers
                     break;
                 }
 
-                var nonTags = ExtractConsecutiveWords(words, x => !IsTag(x));
+                string[] nonTags = ExtractConsecutiveWords(words, x => !IsTag(x));
 
                 string specialCaseTagInjection = string.Empty;
                 bool specialCaseTagInjectionIsBefore = false;
@@ -287,13 +285,13 @@ namespace Helpers
                 {
                     string text = WrapText(string.Join("", nonTags), tag, cssClass);
 
-                    this.content.Append(text);
+                    _content.Append(text);
                 }
                 else
                 {
                     // Check if strong tag
 
-                    if (this.specialCaseOpeningTags.FirstOrDefault(x => Regex.IsMatch(words[0], x)) != null)
+                    if (_specialCaseOpeningTags.FirstOrDefault(x => Regex.IsMatch(words[0], x)) != null)
                     {
                         specialCaseTagInjection = "<ins class='mod'>";
                         if (tag == "del")
@@ -301,7 +299,7 @@ namespace Helpers
                             words.RemoveAt(0);
                         }
                     }
-                    else if (this.specialCaseClosingTags.Contains(words[0]))
+                    else if (_specialCaseClosingTags.Contains(words[0]))
                     {
                         specialCaseTagInjection = "</ins>";
                         specialCaseTagInjectionIsBefore = true;
@@ -310,7 +308,6 @@ namespace Helpers
                             words.RemoveAt(0);
                         }
                     }
-
                 }
 
                 if (words.Count == 0 && specialCaseTagInjection.Length == 0)
@@ -320,11 +317,11 @@ namespace Helpers
 
                 if (specialCaseTagInjectionIsBefore)
                 {
-                    this.content.Append(specialCaseTagInjection + String.Join("", this.ExtractConsecutiveWords(words, x => IsTag(x))));
+                    _content.Append(specialCaseTagInjection + String.Join("", ExtractConsecutiveWords(words, IsTag)));
                 }
                 else
                 {
-                    this.content.Append(String.Join("", this.ExtractConsecutiveWords(words, x => IsTag(x))) + specialCaseTagInjection);
+                    _content.Append(String.Join("", ExtractConsecutiveWords(words, IsTag)) + specialCaseTagInjection);
                 }
             }
         }
@@ -346,7 +343,7 @@ namespace Helpers
 
             if (indexOfFirstTag != null)
             {
-                var items = words.Where((s, pos) => pos >= 0 && pos < indexOfFirstTag).ToArray();
+                string[] items = words.Where((s, pos) => pos >= 0 && pos < indexOfFirstTag).ToArray();
                 if (indexOfFirstTag.Value > 0)
                 {
                     words.RemoveRange(0, indexOfFirstTag.Value);
@@ -355,51 +352,48 @@ namespace Helpers
             }
             else
             {
-                var items = words.Where((s, pos) => pos >= 0 && pos <= words.Count).ToArray();
+                string[] items = words.Where((s, pos) => pos >= 0 && pos <= words.Count).ToArray();
                 words.RemoveRange(0, words.Count);
                 return items;
             }
         }
 
-        private List<Operation> Operations()
+        private IEnumerable<Operation> Operations()
         {
             int positionInOld = 0, positionInNew = 0;
-            List<Operation> operations = new List<Operation>();
+            var operations = new List<Operation>();
 
-            var matches = this.MatchingBlocks();
+            var matches = MatchingBlocks();
 
-            matches.Add(new Match(this.oldWords.Length, this.newWords.Length, 0));
+            matches.Add(new Match(_oldWords.Length, _newWords.Length, 0));
 
-            for (int i = 0; i < matches.Count; i++)
+            foreach (Match match in matches)
             {
-                var match = matches[i];
-
                 bool matchStartsAtCurrentPositionInOld = (positionInOld == match.StartInOld);
                 bool matchStartsAtCurrentPositionInNew = (positionInNew == match.StartInNew);
 
-                Action action = Action.none;
+                Action action;
 
                 if (matchStartsAtCurrentPositionInOld == false
                     && matchStartsAtCurrentPositionInNew == false)
                 {
-                    action = Action.replace;
+                    action = Action.Replace;
                 }
-                else if (matchStartsAtCurrentPositionInOld == true
-                    && matchStartsAtCurrentPositionInNew == false)
+                else if (matchStartsAtCurrentPositionInOld
+                         && matchStartsAtCurrentPositionInNew == false)
                 {
-                    action = Action.insert;
+                    action = Action.Insert;
                 }
-                else if (matchStartsAtCurrentPositionInOld == false
-                    && matchStartsAtCurrentPositionInNew == true)
+                else if (matchStartsAtCurrentPositionInOld == false)
                 {
-                    action = Action.delete;
+                    action = Action.Delete;
                 }
                 else // This occurs if the first few words are the same in both versions
                 {
-                    action = Action.none;
+                    action = Action.None;
                 }
 
-                if (action != Action.none)
+                if (action != Action.None)
                 {
                     operations.Add(
                         new Operation(action,
@@ -412,12 +406,11 @@ namespace Helpers
                 if (match.Size != 0)
                 {
                     operations.Add(new Operation(
-                        Action.equal,
+                        Action.Equal,
                         match.StartInOld,
                         match.EndInOld,
                         match.StartInNew,
                         match.EndInNew));
-
                 }
 
                 positionInOld = match.EndInOld;
@@ -425,35 +418,34 @@ namespace Helpers
             }
 
             return operations;
-
         }
 
         private List<Match> MatchingBlocks()
         {
-            List<Match> matchingBlocks = new List<Match>();
-            this.FindMatchingBlocks(0, this.oldWords.Length, 0, this.newWords.Length, matchingBlocks);
+            var matchingBlocks = new List<Match>();
+            FindMatchingBlocks(0, _oldWords.Length, 0, _newWords.Length, matchingBlocks);
             return matchingBlocks;
         }
 
 
-        private void FindMatchingBlocks(int startInOld, int endInOld, int startInNew, int endInNew, List<Match> matchingBlocks)
+        private void FindMatchingBlocks(int startInOld, int endInOld, int startInNew, int endInNew,
+            List<Match> matchingBlocks)
         {
-            var match = this.FindMatch(startInOld, endInOld, startInNew, endInNew);
+            Match match = FindMatch(startInOld, endInOld, startInNew, endInNew);
 
             if (match != null)
             {
                 if (startInOld < match.StartInOld && startInNew < match.StartInNew)
                 {
-                    this.FindMatchingBlocks(startInOld, match.StartInOld, startInNew, match.StartInNew, matchingBlocks);
+                    FindMatchingBlocks(startInOld, match.StartInOld, startInNew, match.StartInNew, matchingBlocks);
                 }
 
                 matchingBlocks.Add(match);
 
                 if (match.EndInOld < endInOld && match.EndInNew < endInNew)
                 {
-                    this.FindMatchingBlocks(match.EndInOld, endInOld, match.EndInNew, endInNew, matchingBlocks);
+                    FindMatchingBlocks(match.EndInOld, endInOld, match.EndInNew, endInNew, matchingBlocks);
                 }
-
             }
         }
 
@@ -464,26 +456,26 @@ namespace Helpers
             int bestMatchInNew = startInNew;
             int bestMatchSize = 0;
 
-            Dictionary<int, int> matchLengthAt = new Dictionary<int, int>();
+            var matchLengthAt = new Dictionary<int, int>();
 
             for (int indexInOld = startInOld; indexInOld < endInOld; indexInOld++)
             {
                 var newMatchLengthAt = new Dictionary<int, int>();
 
-                string index = this.oldWords[indexInOld];
+                string index = _oldWords[indexInOld];
 
                 if (IsTag(index)) // strip attributes as this is not supported (yet)
                 {
                     index = StripTagAttributes(index);
                 }
 
-                if (!this.wordIndices.ContainsKey(index))
+                if (!_wordIndices.ContainsKey(index))
                 {
                     matchLengthAt = newMatchLengthAt;
                     continue;
                 }
 
-                foreach (var indexInNew in this.wordIndices[index])
+                foreach (int indexInNew in _wordIndices[index])
                 {
                     if (indexInNew < startInNew)
                     {
@@ -496,7 +488,8 @@ namespace Helpers
                     }
 
 
-                    int newMatchLength = (matchLengthAt.ContainsKey(indexInNew - 1) ? matchLengthAt[indexInNew - 1] : 0) + 1;
+                    int newMatchLength = (matchLengthAt.ContainsKey(indexInNew - 1) ? matchLengthAt[indexInNew - 1] : 0) +
+                                         1;
                     newMatchLengthAt[indexInNew] = newMatchLength;
 
                     if (newMatchLength > bestMatchSize)
@@ -520,8 +513,8 @@ namespace Helpers
 
         private static bool IsTag(string item)
         {
-            bool isTag = IsOpeningTag(item) || IsClosingTag(item);
-            return isTag;
+            if (SpecialCaseWordTags.Any(re => item != null && item.StartsWith(re))) return false;
+            return IsOpeningTag(item) || IsClosingTag(item);
         }
 
         private static bool IsOpeningTag(string item)
@@ -549,20 +542,19 @@ namespace Helpers
             return Regex.IsMatch(value, "\\s");
         }
 
-        private static string[] Explode(string value)
+        private static IEnumerable<string> Explode(string value)
         {
             return Regex.Split(value, @"");
         }
-
     }
 
     public class Match
     {
         public Match(int startInOld, int startInNew, int size)
         {
-            this.StartInOld = startInOld;
-            this.StartInNew = startInNew;
-            this.Size = size;
+            StartInOld = startInOld;
+            StartInNew = startInNew;
+            Size = size;
         }
 
         public int StartInOld { get; set; }
@@ -571,53 +563,46 @@ namespace Helpers
 
         public int EndInOld
         {
-            get
-            {
-                return this.StartInOld + this.Size;
-            }
+            get { return StartInOld + Size; }
         }
 
         public int EndInNew
         {
-            get
-            {
-                return this.StartInNew + this.Size;
-            }
+            get { return StartInNew + Size; }
         }
-
     }
 
     public class Operation
     {
+        public Operation(Action action, int startInOld, int endInOld, int startInNew, int endInNew)
+        {
+            Action = action;
+            StartInOld = startInOld;
+            EndInOld = endInOld;
+            StartInNew = startInNew;
+            EndInNew = endInNew;
+        }
+
         public Action Action { get; set; }
         public int StartInOld { get; set; }
         public int EndInOld { get; set; }
         public int StartInNew { get; set; }
         public int EndInNew { get; set; }
-
-        public Operation(Action action, int startInOld, int endInOld, int startInNew, int endInNew)
-        {
-            this.Action = action;
-            this.StartInOld = startInOld;
-            this.EndInOld = endInOld;
-            this.StartInNew = startInNew;
-            this.EndInNew = endInNew;
-        }
     }
 
     public enum Mode
     {
-        character,
-        tag,
-        whitespace,
+        Character,
+        Tag,
+        Whitespace,
     }
 
     public enum Action
     {
-        equal,
-        delete,
-        insert,
-        none,
-        replace
+        Equal,
+        Delete,
+        Insert,
+        None,
+        Replace
     }
 }
