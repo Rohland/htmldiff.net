@@ -8,18 +8,21 @@ namespace HtmlDiff
 {
     public class HtmlDiff
     {
+        /// <summary>
+        /// This value defines balance between speed and memory utilization. The higher it is the faster it works and more memory consumes.
+        /// </summary>
+        private const int MatchGranularityMaximum = 4;
+
         private readonly StringBuilder _content;
-        private readonly string _newText;
-        private readonly string _oldText;
+        private string _newText;
+        private string _oldText;
 
         private readonly string[] _specialCaseClosingTags = { "</strong>", "</b>", "</i>", "</big>", "</small>", "</u>", "</sub>", "</sup>", "</strike>", "</s>" };
         private readonly string[] _specialCaseOpeningTags = { "<strong[\\>\\s]+", "<b[\\>\\s]+", "<i[\\>\\s]+", "<big[\\>\\s]+", "<small[\\>\\s]+", "<u[\\>\\s]+", "<sub[\\>\\s]+", "<sup[\\>\\s]+", "<strike[\\>\\s]+", "<s[\\>\\s]+" };
-        private static readonly string[] SpecialCaseWordTags = { "<img" };
 
         private string[] _newWords;
         private string[] _oldWords;
-        private Dictionary<string, List<int>> _wordIndices;
-
+        private int _matchGranularity;
 
         /// <summary>
         ///     Initializes a new instance of the class.
@@ -52,7 +55,7 @@ namespace HtmlDiff
         {
             SplitInputsToWords();
 
-            IndexNewWords();
+            _matchGranularity = Math.Min(MatchGranularityMaximum, Math.Min(_oldWords.Length, _newWords.Length));
 
             IEnumerable<Operation> operations = Operations();
 
@@ -64,44 +67,17 @@ namespace HtmlDiff
             return _content.ToString();
         }
 
-        private void IndexNewWords()
-        {
-            _wordIndices = new Dictionary<string, List<int>>();
-            for (int i = 0; i < _newWords.Length; i++)
-            {
-                string word = _newWords[i];
-
-                // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
-                if (IsTag(word))
-                {
-                    word = StripTagAttributes(word);
-                }
-
-                if (_wordIndices.ContainsKey(word))
-                {
-                    _wordIndices[word].Add(i);
-                }
-                else
-                {
-                    _wordIndices[word] = new List<int> {i};
-                }
-            }
-        }
-
-        private static string StripTagAttributes(string word)
-        {
-            string tag = Regex.Match(word, @"<[^\s>]+", RegexOptions.None).Value;
-            word = tag + (word.EndsWith("/>") ? "/>" : ">");
-            return word;
-        }
-
         private void SplitInputsToWords()
         {
             _oldWords = ConvertHtmlToListOfWords(Explode(_oldText));
+            //free memory
+            _oldText = null;
             _newWords = ConvertHtmlToListOfWords(Explode(_newText));
+            //free memory
+            _newText = null;
         }
 
-        private string[] ConvertHtmlToListOfWords(IEnumerable<string> characterString)
+        private static string[] ConvertHtmlToListOfWords(IEnumerable<string> characterString)
         {
             var mode = Mode.Character;
             string currentWord = String.Empty;
@@ -276,7 +252,7 @@ namespace HtmlDiff
                     break;
                 }
 
-                string[] nonTags = ExtractConsecutiveWords(words, x => !IsTag(x));
+                string[] nonTags = ExtractConsecutiveWords(words, x => !Utils.IsTag(x));
 
                 string specialCaseTagInjection = string.Empty;
                 bool specialCaseTagInjectionIsBefore = false;
@@ -317,11 +293,11 @@ namespace HtmlDiff
 
                 if (specialCaseTagInjectionIsBefore)
                 {
-                    _content.Append(specialCaseTagInjection + String.Join("", ExtractConsecutiveWords(words, IsTag)));
+                    _content.Append(specialCaseTagInjection + String.Join("", ExtractConsecutiveWords(words, Utils.IsTag)));
                 }
                 else
                 {
-                    _content.Append(String.Join("", ExtractConsecutiveWords(words, IsTag)) + specialCaseTagInjection);
+                    _content.Append(String.Join("", ExtractConsecutiveWords(words, Utils.IsTag)) + specialCaseTagInjection);
                 }
             }
         }
@@ -449,61 +425,16 @@ namespace HtmlDiff
             }
         }
 
-
         private Match FindMatch(int startInOld, int endInOld, int startInNew, int endInNew)
         {
-            int bestMatchInOld = startInOld;
-            int bestMatchInNew = startInNew;
-            int bestMatchSize = 0;
-
-            var matchLengthAt = new Dictionary<int, int>();
-
-            for (int indexInOld = startInOld; indexInOld < endInOld; indexInOld++)
+            for (int i = _matchGranularity; i > 0 ; i--)
             {
-                var newMatchLengthAt = new Dictionary<int, int>();
-
-                string index = _oldWords[indexInOld];
-
-                if (IsTag(index)) // strip attributes as this is not supported (yet)
-                {
-                    index = StripTagAttributes(index);
-                }
-
-                if (!_wordIndices.ContainsKey(index))
-                {
-                    matchLengthAt = newMatchLengthAt;
-                    continue;
-                }
-
-                foreach (int indexInNew in _wordIndices[index])
-                {
-                    if (indexInNew < startInNew)
-                    {
-                        continue;
-                    }
-
-                    if (indexInNew >= endInNew)
-                    {
-                        break;
-                    }
-
-
-                    int newMatchLength = (matchLengthAt.ContainsKey(indexInNew - 1) ? matchLengthAt[indexInNew - 1] : 0) +
-                                         1;
-                    newMatchLengthAt[indexInNew] = newMatchLength;
-
-                    if (newMatchLength > bestMatchSize)
-                    {
-                        bestMatchInOld = indexInOld - newMatchLength + 1;
-                        bestMatchInNew = indexInNew - newMatchLength + 1;
-                        bestMatchSize = newMatchLength;
-                    }
-                }
-
-                matchLengthAt = newMatchLengthAt;
+                var finder = new MatchFinder(i, _oldWords, _newWords, startInOld, endInOld, startInNew, endInNew);
+                var match = finder.FindMatch();
+                if (match != null)
+                    return match;
             }
-
-            return bestMatchSize != 0 ? new Match(bestMatchInOld, bestMatchInNew, bestMatchSize) : null;
+            return null;
         }
 
         private static string WrapText(string text, string tagName, string cssClass)
@@ -511,21 +442,6 @@ namespace HtmlDiff
             return string.Format("<{0} class='{1}'>{2}</{0}>", tagName, cssClass, text);
         }
 
-        private static bool IsTag(string item)
-        {
-            if (SpecialCaseWordTags.Any(re => item != null && item.StartsWith(re))) return false;
-            return IsOpeningTag(item) || IsClosingTag(item);
-        }
-
-        private static bool IsOpeningTag(string item)
-        {
-            return Regex.IsMatch(item, "^\\s*<[^>]+>\\s*$");
-        }
-
-        private static bool IsClosingTag(string item)
-        {
-            return Regex.IsMatch(item, "^\\s*</[^>]+>\\s*$");
-        }
 
         private static bool IsStartOfTag(string val)
         {
@@ -546,63 +462,5 @@ namespace HtmlDiff
         {
             return Regex.Split(value, @"");
         }
-    }
-
-    public class Match
-    {
-        public Match(int startInOld, int startInNew, int size)
-        {
-            StartInOld = startInOld;
-            StartInNew = startInNew;
-            Size = size;
-        }
-
-        public int StartInOld { get; set; }
-        public int StartInNew { get; set; }
-        public int Size { get; set; }
-
-        public int EndInOld
-        {
-            get { return StartInOld + Size; }
-        }
-
-        public int EndInNew
-        {
-            get { return StartInNew + Size; }
-        }
-    }
-
-    public class Operation
-    {
-        public Operation(Action action, int startInOld, int endInOld, int startInNew, int endInNew)
-        {
-            Action = action;
-            StartInOld = startInOld;
-            EndInOld = endInOld;
-            StartInNew = startInNew;
-            EndInNew = endInNew;
-        }
-
-        public Action Action { get; set; }
-        public int StartInOld { get; set; }
-        public int EndInOld { get; set; }
-        public int StartInNew { get; set; }
-        public int EndInNew { get; set; }
-    }
-
-    public enum Mode
-    {
-        Character,
-        Tag,
-        Whitespace,
-    }
-
-    public enum Action
-    {
-        Equal,
-        Delete,
-        Insert,
-        None,
-        Replace
     }
 }
