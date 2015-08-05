@@ -70,10 +70,13 @@ namespace HtmlDiff
         private void SplitInputsToWords()
         {
             _oldWords = ConvertHtmlToListOfWords(Explode(_oldText));
-            //free memory
+
+            //free memory, allow it for GC
             _oldText = null;
+
             _newWords = ConvertHtmlToListOfWords(Explode(_newText));
-            //free memory
+
+            //free memory, allow it for GC
             _newText = null;
         }
 
