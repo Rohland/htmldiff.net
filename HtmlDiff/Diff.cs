@@ -427,6 +427,8 @@ namespace HtmlDiff
 
         private Match FindMatch(int startInOld, int endInOld, int startInNew, int endInNew)
         {
+            //For large texts it is more likely that there is a Match of size bigger than maximum granularity.
+            //If not then go down and try to find it with smaller granularity.
             for (int i = _matchGranularity; i > 0 ; i--)
             {
                 var finder = new MatchFinder(i, _oldWords, _newWords, startInOld, endInOld, startInNew, endInNew);

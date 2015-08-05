@@ -3,6 +3,9 @@ using System.Text;
 
 namespace HtmlDiff
 {
+    /// <summary>
+    /// Finds biggest Match in given texts. It uses indexing with fixed granularity that is used to compare blocks of text.
+    /// </summary>
     public class MatchFinder
     {
         private readonly int _blockSize;
@@ -14,6 +17,15 @@ namespace HtmlDiff
         private readonly int _endInNew;
         private Dictionary<string, List<int>> _wordIndices;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="blockSize">Match granularity, defines how many words are joined into single block</param>
+        /// <param name="oldWords"></param>
+        /// <param name="newWords"></param>
+        /// <param name="startInOld"></param>
+        /// <param name="endInOld"></param>
+        /// <param name="startInNew"></param>
+        /// <param name="endInNew"></param>
         public MatchFinder(int blockSize, string[] oldWords, string[] newWords, int startInOld, int endInOld, int startInNew, int endInNew)
         {
             _blockSize = blockSize;
