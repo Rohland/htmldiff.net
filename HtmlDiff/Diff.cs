@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -17,8 +18,22 @@ namespace HtmlDiff
         private string _newText;
         private string _oldText;
 
-        private readonly string[] _specialCaseClosingTags = { "</strong>", "</b>", "</i>", "</big>", "</small>", "</u>", "</sub>", "</sup>", "</strike>", "</s>" };
-        private readonly string[] _specialCaseOpeningTags = { "<strong[\\>\\s]+", "<b[\\>\\s]+", "<i[\\>\\s]+", "<big[\\>\\s]+", "<small[\\>\\s]+", "<u[\\>\\s]+", "<sub[\\>\\s]+", "<sup[\\>\\s]+", "<strike[\\>\\s]+", "<s[\\>\\s]+" };
+        private static Dictionary<string, int> _specialCaseClosingTags = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
+        {
+            {"</strong>", 0},
+            {"</b>",0},
+            {"</i>",0},
+            {"</big>",0},
+            {"</small>",0},
+            {"</u>",0},
+            {"</sub>",0},
+            {"</sup>",0},
+            {"</strike>",0},
+            {"</s>",0}
+        };
+
+        private static readonly Regex _specialCaseOpeningTagRegex = new Regex(
+            "<((strong)|(b)|(i)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s))[\\>\\s]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private string[] _newWords;
         private string[] _oldWords;
@@ -42,13 +57,8 @@ namespace HtmlDiff
             return new HtmlDiff(oldText, newText).Build();
         }
 
-        public string Build(string oldText, string newText)
-        {
-            return new HtmlDiff(oldText, newText).Build();
-        }
-
         /// <summary>
-        ///     Builds the HTML diff output
+        /// Builds the HTML diff output
         /// </summary>
         /// <returns>HTML diff markup</returns>
         public string Build()
@@ -57,7 +67,7 @@ namespace HtmlDiff
 
             _matchGranularity = Math.Min(MatchGranularityMaximum, Math.Min(_oldWords.Length, _newWords.Length));
 
-            IEnumerable<Operation> operations = Operations();
+            List<Operation> operations = Operations();
 
             foreach (Operation item in operations)
             {
@@ -69,12 +79,12 @@ namespace HtmlDiff
 
         private void SplitInputsToWords()
         {
-            _oldWords = ConvertHtmlToListOfWords(Explode(_oldText));
+            _oldWords = ConvertHtmlToListOfWords(Utils.Explode(_oldText));
 
             //free memory, allow it for GC
             _oldText = null;
 
-            _newWords = ConvertHtmlToListOfWords(Explode(_newText));
+            _newWords = ConvertHtmlToListOfWords(Utils.Explode(_newText));
 
             //free memory, allow it for GC
             _newText = null;
@@ -92,7 +102,7 @@ namespace HtmlDiff
                 {
                     case Mode.Character:
 
-                        if (IsStartOfTag(character))
+                        if (Utils.IsStartOfTag(character))
                         {
                             if (currentWord != String.Empty)
                             {
@@ -102,7 +112,7 @@ namespace HtmlDiff
                             currentWord = "<";
                             mode = Mode.Tag;
                         }
-                        else if (Regex.IsMatch(character, @"\s", RegexOptions.ECMAScript))
+                        else if (Utils.IsWhiteSpace(character))
                         {
                             if (currentWord != String.Empty)
                             {
@@ -111,7 +121,7 @@ namespace HtmlDiff
                             currentWord = character;
                             mode = Mode.Whitespace;
                         }
-                        else if (Regex.IsMatch(character, @"[\w\#@]+", RegexOptions.IgnoreCase | RegexOptions.ECMAScript))
+                        else if (Utils.IsWord(character))
                         {
                             currentWord += character;
                         }
@@ -127,13 +137,13 @@ namespace HtmlDiff
                         break;
                     case Mode.Tag:
 
-                        if (IsEndOfTag(character))
+                        if (Utils.IsEndOfTag(character))
                         {
                             currentWord += ">";
                             words.Add(currentWord);
                             currentWord = "";
 
-                            mode = IsWhiteSpace(character) ? Mode.Whitespace : Mode.Character;
+                            mode = Utils.IsWhiteSpace(character) ? Mode.Whitespace : Mode.Character;
                         }
                         else
                         {
@@ -143,7 +153,7 @@ namespace HtmlDiff
                         break;
                     case Mode.Whitespace:
 
-                        if (IsStartOfTag(character))
+                        if (Utils.IsStartOfTag(character))
                         {
                             if (currentWord != String.Empty)
                             {
@@ -152,7 +162,7 @@ namespace HtmlDiff
                             currentWord = "<";
                             mode = Mode.Tag;
                         }
-                        else if (Regex.IsMatch(character, "\\s"))
+                        else if (Utils.IsWhiteSpace(character))
                         {
                             currentWord += character;
                         }
@@ -180,6 +190,10 @@ namespace HtmlDiff
 
         private void PerformOperation(Operation operation)
         {
+#if DEBUG
+            operation.PrintDebugInfo(_oldWords, _newWords);
+#endif
+
             switch (operation.Action)
             {
                 case Action.Equal:
@@ -262,15 +276,14 @@ namespace HtmlDiff
 
                 if (nonTags.Length != 0)
                 {
-                    string text = WrapText(string.Join("", nonTags), tag, cssClass);
+                    string text = Utils.WrapText(string.Join("", nonTags), tag, cssClass);
 
                     _content.Append(text);
                 }
                 else
                 {
-                    // Check if strong tag
-
-                    if (_specialCaseOpeningTags.FirstOrDefault(x => Regex.IsMatch(words[0], x)) != null)
+                    // Check if the tag is a special case
+                    if (_specialCaseOpeningTagRegex.IsMatch(words[0]))
                     {
                         specialCaseTagInjection = "<ins class='mod'>";
                         if (tag == "del")
@@ -278,7 +291,7 @@ namespace HtmlDiff
                             words.RemoveAt(0);
                         }
                     }
-                    else if (_specialCaseClosingTags.Contains(words[0]))
+                    else if (_specialCaseClosingTags.ContainsKey(words[0]))
                     {
                         specialCaseTagInjection = "</ins>";
                         specialCaseTagInjectionIsBefore = true;
@@ -313,6 +326,11 @@ namespace HtmlDiff
             {
                 string word = words[i];
 
+                if (i == 0 && word == " ")
+                {
+                    words[i] = "&nbsp;";
+                }
+
                 if (!condition(word))
                 {
                     indexOfFirstTag = i;
@@ -337,7 +355,7 @@ namespace HtmlDiff
             }
         }
 
-        private IEnumerable<Operation> Operations()
+        private List<Operation> Operations()
         {
             int positionInOld = 0, positionInNew = 0;
             var operations = new List<Operation>();
@@ -407,7 +425,11 @@ namespace HtmlDiff
         }
 
 
-        private void FindMatchingBlocks(int startInOld, int endInOld, int startInNew, int endInNew,
+        private void FindMatchingBlocks(
+            int startInOld, 
+            int endInOld, 
+            int startInNew, 
+            int endInNew,
             List<Match> matchingBlocks)
         {
             Match match = FindMatch(startInOld, endInOld, startInNew, endInNew);
@@ -430,8 +452,8 @@ namespace HtmlDiff
 
         private Match FindMatch(int startInOld, int endInOld, int startInNew, int endInNew)
         {
-            //For large texts it is more likely that there is a Match of size bigger than maximum granularity.
-            //If not then go down and try to find it with smaller granularity.
+            // For large texts it is more likely that there is a Match of size bigger than maximum granularity.
+            // If not then go down and try to find it with smaller granularity.
             for (int i = _matchGranularity; i > 0 ; i--)
             {
                 var finder = new MatchFinder(i, _oldWords, _newWords, startInOld, endInOld, startInNew, endInNew);
@@ -440,32 +462,6 @@ namespace HtmlDiff
                     return match;
             }
             return null;
-        }
-
-        private static string WrapText(string text, string tagName, string cssClass)
-        {
-            return string.Format("<{0} class='{1}'>{2}</{0}>", tagName, cssClass, text);
-        }
-
-
-        private static bool IsStartOfTag(string val)
-        {
-            return val == "<";
-        }
-
-        private static bool IsEndOfTag(string val)
-        {
-            return val == ">";
-        }
-
-        private static bool IsWhiteSpace(string value)
-        {
-            return Regex.IsMatch(value, "\\s");
-        }
-
-        private static IEnumerable<string> Explode(string value)
-        {
-            return Regex.Split(value, @"");
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 namespace HtmlDiff
 {
     /// <summary>
-    /// Finds biggest Match in given texts. It uses indexing with fixed granularity that is used to compare blocks of text.
+    /// Finds the longest match in given texts. It uses indexing with fixed granularity that is used to compare blocks of text.
     /// </summary>
     public class MatchFinder
     {
@@ -43,19 +43,21 @@ namespace HtmlDiff
             var block = new Queue<string>(_blockSize);
             for (int i = _startInNew; i < _endInNew; i++)
             {
-                var word = ToCleanWord(_newWords[i]);
+                // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
+                var word = Utils.StripAnyAttributes(_newWords[i]);
                 var key = PutNewWord(block, word, _blockSize);
 
                 if (key == null)
                     continue;
 
-                if (_wordIndices.ContainsKey(key))
+                List<int> indicies = null;
+                if (_wordIndices.TryGetValue(key, out indicies))
                 {
-                    _wordIndices[key].Add(i);
+                    indicies.Add(i);
                 }
                 else
                 {
-                    _wordIndices[key] = new List<int> { i };
+                    _wordIndices.Add(key, new List<int> { i });
                 }
             }
         }
@@ -68,23 +70,13 @@ namespace HtmlDiff
 
             if (block.Count != blockSize)
                 return null;
-            
-            var result = new StringBuilder();
+
+            var result = new StringBuilder(blockSize);
             foreach (var s in block)
             {
                 result.Append(s);
             }
             return result.ToString();
-        }
-
-        private static string ToCleanWord(string word)
-        {
-            // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
-            if (Utils.IsTag(word))
-            {
-                word = Utils.StripTagAttributes(word);
-            }
-            return word;
         }
 
         public Match FindMatch()
@@ -103,8 +95,9 @@ namespace HtmlDiff
 
             for (int indexInOld = _startInOld; indexInOld < _endInOld; indexInOld++)
             {
-                var word = ToCleanWord(_oldWords[indexInOld]);
+                var word = Utils.StripAnyAttributes(_oldWords[indexInOld]);
                 var index = PutNewWord(block, word, _blockSize);
+
                 if (index == null)
                     continue;
 
