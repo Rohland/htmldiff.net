@@ -29,5 +29,10 @@ namespace HtmlDiff
             word = tag + (word.EndsWith("/>") ? "/>" : ">");
             return word;
         }
+
+        public static bool IsWhitespace(string item)
+        {
+            return Regex.IsMatch(item, "^(\\s|&nbsp;)+$");
+        }
     }
 }
