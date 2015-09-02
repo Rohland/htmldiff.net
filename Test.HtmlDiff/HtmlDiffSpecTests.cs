@@ -10,7 +10,6 @@ namespace Test.HtmlDiff
     {
         // Shamelessly copied specs from here with a few modifications: https://github.com/myobie/htmldiff/blob/master/spec/htmldiff_spec.rb
         [TestCase("a word is here", "a nother word is there", "a<ins class='diffins'> nother</ins> word is <del class='diffmod'>here</del><ins class='diffmod'>there</ins>")]
-        [TestCase("one a word is somewhere", "two a nother word is somewhere", "<del class='diffmod'>one a</del><ins class='diffmod'>two a nother</ins> word is somewhere")]
         [TestCase("a c", "a b c", "a <ins class='diffins'>b </ins>c")]
         [TestCase("a b c", "a c", "a <del class='diffdel'>b </del>c")]
         [TestCase("a b c", "a <strong>b</strong> c", "a <strong><ins class='mod'>b</ins></strong> c")]
@@ -40,6 +39,22 @@ namespace Test.HtmlDiff
             Debug.WriteLine("");
             Debug.WriteLine("Expected Diff: " + delta);
             var result = global::HtmlDiff.HtmlDiff.Execute(oldtext, newText);
+            Debug.WriteLine("");
+            Debug.WriteLine("Actual Diff: " + result);
+            Assert.AreEqual(delta, result);
+        }
+
+        [TestCase("one a word is somewhere", "two a nother word is somewhere",
+                  "<del class='diffmod'>one a</del><ins class='diffmod'>two a nother</ins> word is somewhere", 0.2d)]
+        [TestCase("one a word is somewhere", "two a nother word is somewhere",
+                  "<del class='diffmod'>one</del><ins class='diffmod'>two</ins> a<ins class='diffins'> nother</ins> word is somewhere", 0.1d)]
+        public void Execute_WithOrphanMatchThreshold_OutputVerified(string oldtext, string newText, string delta, double orphanMatchThreshold)
+        {
+            Debug.WriteLine("Old text: " + oldtext);
+            Debug.WriteLine("New text: " + newText);
+            Debug.WriteLine("");
+            Debug.WriteLine("Expected Diff: " + delta);
+            var result = new global::HtmlDiff.HtmlDiff(oldtext, newText) { OrphanMatchThreshold = orphanMatchThreshold }.Build();
             Debug.WriteLine("");
             Debug.WriteLine("Actual Diff: " + result);
             Assert.AreEqual(delta, result);

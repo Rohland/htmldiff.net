@@ -63,12 +63,15 @@ namespace HtmlDiff
         /// 11111 bb 222222222 dddddd ee
         /// </code>
         /// will find two matches <code>bb</code> and <code>dddddd ee</code> but the first will be considered
-        /// as orphan and ignored:
+        /// as orphan and ignored, as result it will consider texts <code>aaaaa bb ccccccccc</code> and
+        /// <code>11111 bb 222222222</code> as single replacement:
         /// <code>
         /// &lt;del&gt;aaaaa bb ccccccccc&lt;/del&gt;&lt;ins&gt;11111 bb 222222222&lt;/ins&gt; dddddd ee
         /// </code>
         /// This property defines relative size of the match to be considered as orphan, from 0 to 1.
-        /// 0.2 is default.
+        /// 1 means that all matches will be considered as orphans.
+        /// 0 (default) means that no match will be considered as orphan.
+        /// 0.2 means that if match length is less than 20% of distance between its neighbors it is considered as orphan.
         /// </summary>
         public double OrphanMatchThreshold { get; set; }
 
@@ -80,7 +83,6 @@ namespace HtmlDiff
         public HtmlDiff(string oldText, string newText)
         {
             RepeatingWordsAccuracy = 1d; //by default all repeating words should be compared
-            OrphanMatchThreshold = 0.2d;
 
             _oldText = oldText;
             _newText = newText;
