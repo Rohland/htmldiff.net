@@ -9,7 +9,7 @@ namespace Test.HtmlDiff
     public class HtmlDiffSpecTests
     {
         // Shamelessly copied specs from here with a few modifications: https://github.com/myobie/htmldiff/blob/master/spec/htmldiff_spec.rb
-        [TestCase("a word is here", "a nother word is there", "a<ins class='diffins'> nother</ins> word is <del class='diffmod'>here</del><ins class='diffmod'>there</ins>")]
+        [TestCase("a word is here", "a nother word is there", "a<ins class='diffins'>&nbsp;nother</ins> word is <del class='diffmod'>here</del><ins class='diffmod'>there</ins>")]
         [TestCase("a c", "a b c", "a <ins class='diffins'>b </ins>c")]
         [TestCase("a b c", "a c", "a <del class='diffdel'>b </del>c")]
         [TestCase("a b c", "a <strong>b</strong> c", "a <strong><ins class='mod'>b</ins></strong> c")]
@@ -18,7 +18,7 @@ namespace Test.HtmlDiff
         [TestCase("<img src='logo.jpg'/>", "", "<del class='diffdel'><img src='logo.jpg'/></del>")]
         [TestCase("", "<img src='logo.jpg'/>", "<ins class='diffins'><img src='logo.jpg'/></ins>")]
         [TestCase("symbols 'should not' belong <b>to</b> words", "symbols should not belong <b>\"to\"</b> words", "symbols <del class='diffdel'>'</del>should not<del class='diffdel'>'</del> belong <b><ins class='diffins'>\"</ins>to<ins class='diffins'>\"</ins></b> words")]
-        [TestCase("entities are separate amp;words", "entities are&nbsp;separate &amp;words", "entities are<del class='diffmod'> </del><ins class='diffmod'>&nbsp;</ins>separate <del class='diffmod'>amp;</del><ins class='diffmod'>&amp;</ins>words")]
+        [TestCase("entities are separate amp;words", "entities are&nbsp;separate &amp;words", "entities are<del class='diffmod'>&nbsp;</del><ins class='diffmod'>&nbsp;</ins>separate <del class='diffmod'>amp;</del><ins class='diffmod'>&amp;</ins>words")]
 
         [TestCase(
             "This is a longer piece of text to ensure the new blocksize algorithm works", 
@@ -47,7 +47,7 @@ namespace Test.HtmlDiff
         [TestCase("one a word is somewhere", "two a nother word is somewhere",
                   "<del class='diffmod'>one a</del><ins class='diffmod'>two a nother</ins> word is somewhere", 0.2d)]
         [TestCase("one a word is somewhere", "two a nother word is somewhere",
-                  "<del class='diffmod'>one</del><ins class='diffmod'>two</ins> a<ins class='diffins'> nother</ins> word is somewhere", 0.1d)]
+                  "<del class='diffmod'>one</del><ins class='diffmod'>two</ins> a<ins class='diffins'>&nbsp;nother</ins> word is somewhere", 0.1d)]
         public void Execute_WithOrphanMatchThreshold_OutputVerified(string oldtext, string newText, string delta, double orphanMatchThreshold)
         {
             Debug.WriteLine("Old text: " + oldtext);
