@@ -5,7 +5,7 @@ using System.Text;
 namespace HtmlDiff
 {
     /// <summary>
-    /// Finds biggest Match in given texts. It uses indexing with fixed granularity that is used to compare blocks of text.
+    /// Finds the longest match in given texts. It uses indexing with fixed granularity that is used to compare blocks of text.
     /// </summary>
     internal class MatchFinder
     {
@@ -44,19 +44,21 @@ namespace HtmlDiff
             var block = new Queue<string>(_options.BlockSize);
             for (int i = _startInNew; i < _endInNew; i++)
             {
-                var word = ToCleanWord(_newWords[i]);
+                // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
+                var word = NormalizeForIndex(_newWords[i]);
                 var key = PutNewWord(block, word, _options.BlockSize);
 
                 if (key == null)
                     continue;
 
-                if (_wordIndices.ContainsKey(key))
+                List<int> indicies;
+                if (_wordIndices.TryGetValue(key, out indicies))
                 {
-                    _wordIndices[key].Add(i);
+                    indicies.Add(i);
                 }
                 else
                 {
-                    _wordIndices[key] = new List<int> { i };
+                    _wordIndices.Add(key, new List<int> { i });
                 }
             }
         }
@@ -69,8 +71,8 @@ namespace HtmlDiff
 
             if (block.Count != blockSize)
                 return null;
-            
-            var result = new StringBuilder();
+
+            var result = new StringBuilder(blockSize);
             foreach (var s in block)
             {
                 result.Append(s);
@@ -78,14 +80,15 @@ namespace HtmlDiff
             return result.ToString();
         }
 
-        private string ToCleanWord(string word)
+        /// <summary>
+        /// Converts the word to index-friendly value so it can be compared with other similar words
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
+        private string NormalizeForIndex(string word)
         {
-            // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
-            if (Utils.IsTag(word))
-            {
-                word = Utils.StripTagAttributes(word);
-            }
-            if (_options.IgnoreWhitespaceDifferences && Utils.IsWhitespace(word))
+            word = Utils.StripAnyAttributes(word);
+            if (_options.IgnoreWhitespaceDifferences && Utils.IsWhiteSpace(word))
                 return " ";
 
             return word;
@@ -108,8 +111,9 @@ namespace HtmlDiff
 
             for (int indexInOld = _startInOld; indexInOld < _endInOld; indexInOld++)
             {
-                var word = ToCleanWord(_oldWords[indexInOld]);
+                var word = NormalizeForIndex(_oldWords[indexInOld]);
                 var index = PutNewWord(block, word, _options.BlockSize);
+
                 if (index == null)
                     continue;
 

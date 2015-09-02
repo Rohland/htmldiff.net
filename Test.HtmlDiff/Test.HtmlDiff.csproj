@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Bugs\DiffTests.cs" />
     <Compile Include="HtmlDiffSpecTests.cs" />
+    <Compile Include="PerformanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
