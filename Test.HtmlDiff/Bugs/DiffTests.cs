@@ -16,7 +16,7 @@ namespace Test.HtmlDiff.Bugs
             var oldText = "The Dealer.";
             var newText = "The Dealer info,";
             var output = global::HtmlDiff.HtmlDiff.Execute(oldText, newText);
-            Assert.AreEqual("The Dealer<del class='diffmod'>.</del><ins class='diffmod'> info,</ins>", output);
+            Assert.AreEqual("The Dealer<del class='diffmod'>.</del><ins class='diffmod'>&nbsp;info,</ins>", output);
         }
     }
 }

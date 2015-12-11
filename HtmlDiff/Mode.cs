@@ -5,5 +5,6 @@
         Character,
         Tag,
         Whitespace,
+        Entity,
     }
 }

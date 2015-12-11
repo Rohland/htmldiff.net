@@ -55,6 +55,7 @@
     <Compile Include="Diff.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="MatchFinder.cs" />
+    <Compile Include="MatchOptions.cs" />
     <Compile Include="Mode.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace HtmlDiff
@@ -9,8 +8,7 @@ namespace HtmlDiff
         private static Regex openingTagRegex = new Regex("^\\s*<[^>]+>\\s*$", RegexOptions.Compiled);
         private static Regex closingTagTexRegex = new Regex("^\\s*</[^>]+>\\s*$", RegexOptions.Compiled);
         private static Regex tagWordRegex = new Regex(@"<[^\s>]+", RegexOptions.Compiled);
-        private static Regex whitespaceRegex = new Regex("\\s", RegexOptions.Compiled);
-        private static Regex splitRegex = new Regex(@"", RegexOptions.Compiled);
+        private static Regex whitespaceRegex = new Regex("^(\\s|&nbsp;)+$", RegexOptions.Compiled);
         private static Regex wordRegex = new Regex(@"[\w\#@]+", RegexOptions.Compiled | RegexOptions.ECMAScript);
 
         private static readonly string[] SpecialCaseWordTags = { "<img" };
@@ -43,15 +41,24 @@ namespace HtmlDiff
             return string.Format("<{0} class='{1}'>{2}</{0}>", tagName, cssClass, text);
         }
 
-
-        public static bool IsStartOfTag(string val)
+        public static bool IsStartOfTag(char val)
         {
-            return val == "<";
+            return val == '<';
         }
 
-        public static bool IsEndOfTag(string val)
+        public static bool IsEndOfTag(char val)
         {
-            return val == ">";
+            return val == '>';
+        }
+
+        public static bool IsStartOfEntity(char val)
+        {
+            return val == '&';
+        }
+
+        public static bool IsEndOfEntity(char val)
+        {
+            return val == ';';
         }
 
         public static bool IsWhiteSpace(string value)
@@ -59,23 +66,23 @@ namespace HtmlDiff
             return whitespaceRegex.IsMatch(value);
         }
 
-        public static IEnumerable<string> Explode(string value)
+        public static bool IsWhiteSpace(char value)
         {
-            return splitRegex.Split(value);
+            return char.IsWhiteSpace(value);
         }
 
         public static string StripAnyAttributes(string word)
         {
-            if (Utils.IsTag(word))
+            if (IsTag(word))
             {
-                return Utils.StripTagAttributes(word);
+                return StripTagAttributes(word);
             }
             return word;
         }
 
-        public static bool IsWord(string text)
+        public static bool IsWord(char text)
         {
-            return wordRegex.IsMatch(text);
+            return wordRegex.IsMatch(new string(new[] { text }));
         }
     }
 }
