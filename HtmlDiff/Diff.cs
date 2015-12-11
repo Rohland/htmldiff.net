@@ -17,6 +17,7 @@ namespace HtmlDiff
         private readonly StringBuilder _content;
         private string _newText;
         private string _oldText;
+        
 
         private static Dictionary<string, int> _specialCaseClosingTags = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
         {
@@ -34,6 +35,12 @@ namespace HtmlDiff
 
         private static readonly Regex _specialCaseOpeningTagRegex = new Regex(
             "<((strong)|(b)|(i)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s))[\\>\\s]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+
+        /// <summary>
+        /// Tracks opening and closing formatting tags to ensure that we don't inadvertently generate invalid html during the diff process.
+        /// </summary>
+        private Stack<string> _specialTagDiffStack; 
 
         private string[] _newWords;
         private string[] _oldWords;
@@ -88,6 +95,7 @@ namespace HtmlDiff
             _newText = newText;
 
             _content = new StringBuilder();
+            _specialTagDiffStack = new Stack<string>();
         }
 
         public static string Execute(string oldText, string newText)
@@ -353,14 +361,13 @@ namespace HtmlDiff
 
         private void ProcessInsertOperation(Operation operation, string cssClass)
         {
-            InsertTag("ins", cssClass,
-                _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList());
+            List<string> text = _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList();
+            InsertTag("ins", cssClass, text);
         }
 
         private void ProcessDeleteOperation(Operation operation, string cssClass)
         {
-            List<string> text =
-                _oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
+            List<string> text = _oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
             InsertTag("del", cssClass, text);
         }
 
@@ -417,19 +424,44 @@ namespace HtmlDiff
                     // Check if the tag is a special case
                     if (_specialCaseOpeningTagRegex.IsMatch(words[0]))
                     {
+                        _specialTagDiffStack.Push(words[0]);
                         specialCaseTagInjection = "<ins class='mod'>";
                         if (tag == "del")
                         {
                             words.RemoveAt(0);
+
+                            // following tags may be formatting tags as well, follow through
+                            while (words.Count > 0 && _specialCaseOpeningTagRegex.IsMatch(words[0]))
+                            {
+                                words.RemoveAt(0);   
+                            }
                         }
                     }
+
                     else if (_specialCaseClosingTags.ContainsKey(words[0]))
                     {
-                        specialCaseTagInjection = "</ins>";
-                        specialCaseTagInjectionIsBefore = true;
+                        var openingTag = _specialTagDiffStack.Count == 0 ? null : _specialTagDiffStack.Pop();
+
+                        // If we didn't have an opening tag, and we don't have a match with the previous tag used 
+                        if (openingTag == null || openingTag != words.Last().Replace("/", ""))
+                        {
+                            // do nothing
+                        }
+                        else
+                        {
+                            specialCaseTagInjection = "</ins>";
+                            specialCaseTagInjectionIsBefore = true;
+                        }
+
                         if (tag == "del")
                         {
                             words.RemoveAt(0);
+
+                            // following tags may be formatting tags as well, follow through
+                            while (words.Count > 0 && _specialCaseClosingTags.ContainsKey(words[0]))
+                            {
+                                words.RemoveAt(0);
+                            }
                         }
                     }
                 }

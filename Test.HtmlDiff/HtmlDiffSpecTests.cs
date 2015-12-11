@@ -30,6 +30,16 @@ namespace Test.HtmlDiff
             "By virtue of an agreement between xxx and the <b>yyy</b> schools, ...",
             "By virtue of an agreement between xxx and the <b>yyy</b> schools, ...")]
 
+        [TestCase(
+            "Some plain text",
+            "Some <strong><i>plain</i></strong> text",
+            "Some <strong><i><ins class='mod'>plain</ins></i></strong> text")]
+
+        [TestCase(
+            "Some <strong><i>formatted</i></strong> text",
+            "Some formatted text",
+            "Some <ins class='mod'>formatted</ins> text")]
+
         // TODO: Don't speak Chinese, this needs to be validated
         [TestCase("这个是中文内容, CSharp is the bast", "这是中国语内容，CSharp is the best language.", "这<del class='diffdel'>个</del>是中<del class='diffmod'>文</del><ins class='diffmod'>国语</ins>内容<del class='diffmod'>, </del><ins class='diffmod'>，</ins>CSharp is the <del class='diffmod'>bast</del><ins class='diffmod'>best language.</ins>")]
         public void Execute_WithStandardSpecs_OutputVerified(string oldtext, string newText, string delta)
@@ -44,10 +54,17 @@ namespace Test.HtmlDiff
             Assert.AreEqual(delta, result);
         }
 
-        [TestCase("one a word is somewhere", "two a nother word is somewhere",
-                  "<del class='diffmod'>one a</del><ins class='diffmod'>two a nother</ins> word is somewhere", 0.2d)]
-        [TestCase("one a word is somewhere", "two a nother word is somewhere",
-                  "<del class='diffmod'>one</del><ins class='diffmod'>two</ins> a<ins class='diffins'>&nbsp;nother</ins> word is somewhere", 0.1d)]
+        [TestCase(
+            "one a word is somewhere", 
+            "two a nother word is somewhere",
+            "<del class='diffmod'>one a</del><ins class='diffmod'>two a nother</ins> word is somewhere", 
+            0.2d)]
+
+        [TestCase(
+            "one a word is somewhere", 
+            "two a nother word is somewhere",
+            "<del class='diffmod'>one</del><ins class='diffmod'>two</ins> a<ins class='diffins'>&nbsp;nother</ins> word is somewhere", 
+            0.1d)]
         public void Execute_WithOrphanMatchThreshold_OutputVerified(string oldtext, string newText, string delta, double orphanMatchThreshold)
         {
             Debug.WriteLine("Old text: " + oldtext);
