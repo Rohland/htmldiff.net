@@ -45,6 +45,7 @@ namespace HtmlDiff
         private string[] _newWords;
         private string[] _oldWords;
         private int _matchGranularity;
+        private List<Regex> _blockExpressions; 
 
         /// <summary>
         /// Defines how to compare repeating words. Valid values are from 0 to 1.
@@ -96,6 +97,7 @@ namespace HtmlDiff
 
             _content = new StringBuilder();
             _specialTagDiffStack = new Stack<string>();
+            _blockExpressions = new List<Regex>();
         }
 
         public static string Execute(string oldText, string newText)
@@ -123,209 +125,26 @@ namespace HtmlDiff
             return _content.ToString();
         }
 
+        /// <summary>
+        /// Uses <paramref name="expression"/> to group text together so that any change detected within the group is treated as a single block
+        /// </summary>
+        /// <param name="expression"></param>
+        public void AddBlockExpression(Regex expression)
+        {
+            _blockExpressions.Add(expression);
+        }
+
         private void SplitInputsToWords()
         {
-            _oldWords = ConvertHtmlToListOfWords(_oldText);
+            _oldWords = WordSplitter.ConvertHtmlToListOfWords(_oldText, _blockExpressions);
 
             //free memory, allow it for GC
             _oldText = null;
 
-            _newWords = ConvertHtmlToListOfWords(_newText);
+            _newWords = WordSplitter.ConvertHtmlToListOfWords(_newText, _blockExpressions);
 
             //free memory, allow it for GC
             _newText = null;
-        }
-
-        private static string[] ConvertHtmlToListOfWords(IEnumerable<char> characterString)
-        {
-            var mode = Mode.Character;
-            var currentWord = new List<char>();
-            var words = new List<string>();
-
-            foreach (var character in characterString)
-            {
-                switch (mode)
-                {
-                    case Mode.Character:
-
-                        if (Utils.IsStartOfTag(character))
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-
-                            currentWord.Clear();
-                            currentWord.Add('<');
-                            mode = Mode.Tag;
-                        }
-                        else if (Utils.IsStartOfEntity(character))
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Entity;
-                        }
-                        else if (Utils.IsWhiteSpace(character))
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Whitespace;
-                        }
-                        else if (Utils.IsWord(character)
-                            && (currentWord.Count == 0 || Utils.IsWord(currentWord.Last())))
-                        {
-                            currentWord.Add(character);
-                        }
-                        else
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                        }
-
-                        break;
-                    case Mode.Tag:
-
-                        if (Utils.IsEndOfTag(character))
-                        {
-                            currentWord.Add(character);
-                            words.Add(new string(currentWord.ToArray()));
-                            currentWord.Clear();
-
-                            mode = Utils.IsWhiteSpace(character) ? Mode.Whitespace : Mode.Character;
-                        }
-                        else
-                        {
-                            currentWord.Add(character);
-                        }
-
-                        break;
-                    case Mode.Whitespace:
-
-                        if (Utils.IsStartOfTag(character))
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Tag;
-                        }
-                        else if (Utils.IsStartOfEntity(character))
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Entity;
-                        }
-                        else if (Utils.IsWhiteSpace(character))
-                        {
-                            currentWord.Add(character);
-                        }
-                        else
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Character;
-                        }
-
-                        break;
-                    case Mode.Entity:
-                        if (Utils.IsStartOfTag(character))
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Tag;
-                        }
-                        else if (char.IsWhiteSpace(character))
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Whitespace;
-                        }
-                        else if (Utils.IsEndOfEntity(character))
-                        {
-                            var switchToNextMode = true;
-                            if (currentWord.Count != 0)
-                            {
-                                currentWord.Add(character);
-                                words.Add(new string(currentWord.ToArray()));
-
-                                //join &nbsp; entity with last whitespace
-                                if (words.Count > 2
-                                    && Utils.IsWhiteSpace(words[words.Count - 2])
-                                    && Utils.IsWhiteSpace(words[words.Count - 1]))
-                                {
-                                    var w1 = words[words.Count - 2];
-                                    var w2 = words[words.Count - 1];
-                                    words.RemoveRange(words.Count - 2, 2);
-                                    currentWord.Clear();
-                                    currentWord.AddRange(w1);
-                                    currentWord.AddRange(w2);
-                                    mode = Mode.Whitespace;
-                                    switchToNextMode = false;
-                                }
-                            }
-                            if (switchToNextMode)
-                            {
-                                currentWord.Clear();
-                                mode = Mode.Character;
-                            }
-                        }
-                        else if (Utils.IsWord(character))
-                        {
-                            currentWord.Add(character);
-                        }
-                        else
-                        {
-                            if (currentWord.Count != 0)
-                            {
-                                words.Add(new string(currentWord.ToArray()));
-                            }
-                            currentWord.Clear();
-                            currentWord.Add(character);
-                            mode = Mode.Character;
-                        }
-                        break;
-                }
-            }
-            if (currentWord.Count != 0)
-            {
-                words.Add(new string(currentWord.ToArray()));
-            }
-
-            return words.ToArray();
         }
 
         private void PerformOperation(Operation operation)

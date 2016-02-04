@@ -60,6 +60,7 @@
     <Compile Include="Operation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="WordSplitter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HtmlDiff.nuspec">
