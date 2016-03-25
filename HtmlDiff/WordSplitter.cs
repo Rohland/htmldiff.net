@@ -20,6 +20,9 @@ namespace HtmlDiff
             var currentWord = new List<char>();
             var words = new List<string>();
 
+            if (String.IsNullOrEmpty(text))
+                return words.ToArray();
+
             Dictionary<int, int> blockLocations = FindBlocks(text, blockExpressions);
 
             bool isBlockCheckRequired = blockLocations.Any();
