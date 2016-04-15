@@ -22,6 +22,7 @@ namespace HtmlDiff
         private static Dictionary<string, int> _specialCaseClosingTags = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
         {
             {"</strong>", 0},
+            {"</em>", 0},
             {"</b>",0},
             {"</i>",0},
             {"</big>",0},
@@ -34,7 +35,7 @@ namespace HtmlDiff
         };
 
         private static readonly Regex _specialCaseOpeningTagRegex = new Regex(
-            "<((strong)|(b)|(i)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s))[\\>\\s]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            "<((strong)|(b)|(i)|(em)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s))[\\>\\s]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
 
         /// <summary>
@@ -111,18 +112,26 @@ namespace HtmlDiff
         /// <returns>HTML diff markup</returns>
         public string Build()
         {
-            SplitInputsToWords();
-
-            _matchGranularity = Math.Min(MatchGranularityMaximum, Math.Min(_oldWords.Length, _newWords.Length));
-
-            List<Operation> operations = Operations();
-
-            foreach (Operation item in operations)
+            //we should check if there is a difference in the first place. we do not want to do all this calculation for nothing.
+            if (_oldText != _newText)
             {
-                PerformOperation(item);
-            }
+                SplitInputsToWords();
 
-            return _content.ToString();
+                _matchGranularity = Math.Min(MatchGranularityMaximum, Math.Min(_oldWords.Length, _newWords.Length));
+
+                List<Operation> operations = Operations();
+
+                foreach (Operation item in operations)
+                {
+                    PerformOperation(item);
+                }
+
+                return _content.ToString();
+            }
+            else 
+            {
+                return _newText;
+            }
         }
 
         /// <summary>
