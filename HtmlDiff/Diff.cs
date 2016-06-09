@@ -112,26 +112,24 @@ namespace HtmlDiff
         /// <returns>HTML diff markup</returns>
         public string Build()
         {
-            //we should check if there is a difference in the first place. we do not want to do all this calculation for nothing.
-            if (_oldText != _newText)
-            {
-                SplitInputsToWords();
-
-                _matchGranularity = Math.Min(MatchGranularityMaximum, Math.Min(_oldWords.Length, _newWords.Length));
-
-                List<Operation> operations = Operations();
-
-                foreach (Operation item in operations)
-                {
-                    PerformOperation(item);
-                }
-
-                return _content.ToString();
-            }
-            else 
+            // If there is no difference, don't bother checking for differences
+            if (_oldText == _newText)
             {
                 return _newText;
             }
+
+            SplitInputsToWords();
+
+            _matchGranularity = Math.Min(MatchGranularityMaximum, Math.Min(_oldWords.Length, _newWords.Length));
+
+            List<Operation> operations = Operations();
+
+            foreach (Operation item in operations)
+            {
+                PerformOperation(item);
+            }
+
+            return _content.ToString();
         }
 
         /// <summary>
