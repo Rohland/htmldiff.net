@@ -125,7 +125,7 @@ namespace HtmlDiff
         }
 
         /// <summary>
-        /// Builds the HTML diff output
+        /// Builds the HTML diff output (Note: If there is a context specified and the content is equal, then null will be returned)
         /// </summary>
         /// <returns>HTML diff markup</returns>
         public string Build()
@@ -133,6 +133,8 @@ namespace HtmlDiff
             // If there is no difference, don't bother checking for differences
             if (_oldText == _newText)
             {
+                if (LinesContext > 0)
+                    return null;
                 return _newText;
             }
 
