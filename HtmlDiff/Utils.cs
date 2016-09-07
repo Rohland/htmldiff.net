@@ -9,7 +9,14 @@ namespace HtmlDiff
         private static Regex closingTagTexRegex = new Regex("^\\s*</[^>]+>\\s*$", RegexOptions.Compiled);
         private static Regex tagWordRegex = new Regex(@"<[^\s>]+", RegexOptions.Compiled);
         private static Regex whitespaceRegex = new Regex("^(\\s|&nbsp;)+$", RegexOptions.Compiled);
+
+        /// bug in .NET core prevents RegexOptions.Compiled | RegexOptions.ECMAScript
+        /// tracked at: https://github.com/dotnet/corefx/issues/11270
+#if NETSTANDARD1_3
+        private static Regex wordRegex = new Regex(@"[\w\#@]+", RegexOptions.ECMAScript);
+#else
         private static Regex wordRegex = new Regex(@"[\w\#@]+", RegexOptions.Compiled | RegexOptions.ECMAScript);
+#endif
 
         private static readonly string[] SpecialCaseWordTags = { "<img" };
 

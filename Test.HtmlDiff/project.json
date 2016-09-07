@@ -1,0 +1,25 @@
+{
+  "testRunner": "nunit",
+  "dependencies": {
+    "NUnitLite": "3.4.1",
+    "dotnet-test-nunit": "3.4.0-beta-2",
+    "HtmlDiff": {
+      "target": "project"
+    }
+  },
+  "buildOptions": {
+    "define": [ "NET_CORE" ]
+  },
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "dotnet5.6",
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0",
+          "type": "platform"
+        }
+      }
+    }
+  }
+}
+
