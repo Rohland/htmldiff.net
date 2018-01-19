@@ -117,5 +117,71 @@ namespace Test.HtmlDiff
             var ex = Assert.Throws<ArgumentException>(() => diff.Build());
             Assert.IsTrue(ex.Message.EndsWith(pattern));
         }
+
+
+        #region NewOptions
+
+        [TestCase(
+            "one a word is somewhere", 
+            "a word is somewhere",
+            "a word is somewhere")]
+
+        [TestCase(
+            "one a word is somewhere", 
+            "two a word is somewhere",
+            "<ins class='diffmod'>two</ins> a word is somewhere")]
+        public void Execute_WithIgnoreDelete_OutputVerified(string oldText, string newText, string delta)
+        {
+            Debug.WriteLine("Old text: " + oldText);
+            Debug.WriteLine("New text: " + newText);
+            Debug.WriteLine("");
+            Debug.WriteLine("Expected Diff: " + delta);
+            var diff = new global::HtmlDiff.HtmlDiff(oldText, newText){ IgnoreDelete = true};
+            var result = diff.Build();
+            Debug.WriteLine("");
+            Debug.WriteLine("Actual Diff: " + result);
+            Assert.AreEqual(delta, result);
+        }
+
+        [TestCase(
+            "a word is somewhere", 
+            "one a word is somewhere",
+            "one a word is somewhere")]
+
+        [TestCase(
+            "one a word is somewhere", 
+            "two a word is somewhere",
+            "<del class='diffmod'>one</del>two a word is somewhere")]
+        public void Execute_WithIgnoreInsert_OutputVerified(string oldText, string newText, string delta)
+        {
+            Debug.WriteLine("Old text: " + oldText);
+            Debug.WriteLine("New text: " + newText);
+            Debug.WriteLine("");
+            Debug.WriteLine("Expected Diff: " + delta);
+            var diff = new global::HtmlDiff.HtmlDiff(oldText, newText){ IgnoreInsert = true };
+            var result = diff.Build();
+            Debug.WriteLine("");
+            Debug.WriteLine("Actual Diff: " + result);
+            Assert.AreEqual(delta, result);
+        }
+        
+        [TestCase(
+            "one a word is somewhere", 
+            "two a texts is somewhere",
+            "two a texts is somewhere")]
+        public void Execute_WithIgnoreDeleteAndIgnoreInsert_OutputVerified(string oldText, string newText, string delta)
+        {
+            Debug.WriteLine("Old text: " + oldText);
+            Debug.WriteLine("New text: " + newText);
+            Debug.WriteLine("");
+            Debug.WriteLine("Expected Diff: " + delta);
+            var diff = new global::HtmlDiff.HtmlDiff(oldText, newText){ IgnoreDelete = true, IgnoreInsert = true };
+            var result = diff.Build();
+            Debug.WriteLine("");
+            Debug.WriteLine("Actual Diff: " + result);
+            Assert.AreEqual(delta, result);
+        }
+
+        #endregion
     }
 }

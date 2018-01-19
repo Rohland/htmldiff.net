@@ -16,8 +16,7 @@ namespace HtmlDiff
 
         private readonly StringBuilder _content;
         private string _newText;
-        private string _oldText;
-        
+        private string _oldText;               
 
         private static Dictionary<string, int> _specialCaseClosingTags = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
         {
@@ -83,6 +82,16 @@ namespace HtmlDiff
         /// 0.2 means that if match length is less than 20% of distance between its neighbors it is considered as orphan.
         /// </summary>
         public double OrphanMatchThreshold { get; set; }
+
+        /// <summary>
+        /// If true all deleted texts are not formatted.
+        /// </summary>
+        public bool IgnoreDelete { get; set; }
+
+        /// <summary>
+        /// If true all inserted texts are not formatted.
+        /// </summary>
+        public bool IgnoreInsert { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the class.
@@ -188,11 +197,21 @@ namespace HtmlDiff
         private void ProcessInsertOperation(Operation operation, string cssClass)
         {
             List<string> text = _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList();
+
+            if (IgnoreInsert)
+            {
+                _content.Append(string.Join("", text.ToArray()));
+                return;
+            }
+            
             InsertTag("ins", cssClass, text);
         }
 
         private void ProcessDeleteOperation(Operation operation, string cssClass)
         {
+            if (IgnoreDelete)
+                return;
+
             List<string> text = _oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
             InsertTag("del", cssClass, text);
         }
