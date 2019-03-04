@@ -47,7 +47,8 @@ namespace Test.HtmlDiff
             var s = Stopwatch.StartNew();
             var delta = global::HtmlDiff.HtmlDiff.Execute(oldText.ToString(), newText.ToString());
             s.Stop();
-            Assert.IsNotNullOrEmpty(delta);
+            Assert.IsNotNull(delta);
+            Assert.IsNotEmpty(delta);
             Debug.WriteLine("Execution time: {0}, oldText size: {1}, newText size: {2}, delta size: {3}", s.Elapsed, oldText.Length, newText.Length, delta.Length);
         }
     }
