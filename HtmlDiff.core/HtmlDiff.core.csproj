@@ -1,17 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFrameworks>net45;netcoreapp2.2</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/brianpos/htmldiff.net</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/brianpos/htmldiff.net/blob/master/license.txt</PackageLicenseUrl>
     <Description>A library for comparing two HTML files/snippets and highlighting the differences using simple HTML.
-(this is a fork of Rohland de Charmoy's HtmlDiff library, with lines of context to include, and compiled for netcore2)</Description>
+(this is a fork of Rohland de Charmoy's HtmlDiff library, with lines of context to include, and compiled for netcore2/net45)</Description>
     <Authors>Brian Postlethwaite</Authors>
     <RepositoryUrl>https://github.com/brianpos/htmldiff.net</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageReleaseNotes>This is a slightly updated version that better supports XML diffs, with a context number of lines</PackageReleaseNotes>
     <Company />
+    <Version>1.2.0</Version>
+    <Product>HtmlDiff</Product>
   </PropertyGroup>
 
   <ItemGroup>

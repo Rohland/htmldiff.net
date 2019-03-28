@@ -59,12 +59,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HtmlDiff\HtmlDiff.csproj">
-      <Project>{186B7471-867E-4AE8-9BD2-1DDA8BF76BC0}</Project>
-      <Name>HtmlDiff</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +66,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HtmlDiff.core\HtmlDiff.core.csproj">
+      <Project>{61b0724c-d7de-485c-895f-4d651d1d186d}</Project>
+      <Name>HtmlDiff.core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
