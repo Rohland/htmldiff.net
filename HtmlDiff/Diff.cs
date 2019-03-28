@@ -65,6 +65,23 @@ namespace HtmlDiff
         public bool IgnoreWhitespaceDifferences { get; set; }
 
         /// <summary>
+        /// If greater than 0, the text will be broken into div sections that contain
+        /// the number of lines before and after each change.
+        /// Where changes are closer than the context, a new section is not started, and all content output
+        /// If there are no changes, then a null string is returned.
+        /// </summary>
+        /// <example>LinesContext = 1 // Only the line with the change is returned</example>
+        /// <example>LinesContext = 4 // The line with the change is returned and up to 3 lines before and after</example>
+        public int LinesContext { get; set; }
+
+        /// <summary>
+        /// When using the Context option, the name of the class that is injected into the groupers
+        /// </summary>
+        /// <remarks>If LinesContext is provided, and no ContextSelectionClass is </remarks>
+        /// <example></example>
+        public string ContextSectionClass { get; set; }
+
+        /// <summary>
         /// If some match is too small and located far from its neighbors then it is considered as orphan
         /// and removed. For example:
         /// <code>
@@ -92,6 +109,7 @@ namespace HtmlDiff
         public HtmlDiff(string oldText, string newText)
         {
             RepeatingWordsAccuracy = 1d; //by default all repeating words should be compared
+            ContextSectionClass = "diffsection";
 
             _oldText = oldText;
             _newText = newText;
@@ -107,7 +125,7 @@ namespace HtmlDiff
         }
 
         /// <summary>
-        /// Builds the HTML diff output
+        /// Builds the HTML diff output (Note: If there is a context specified and the content is equal, then null will be returned)
         /// </summary>
         /// <returns>HTML diff markup</returns>
         public string Build()
@@ -115,6 +133,8 @@ namespace HtmlDiff
             // If there is no difference, don't bother checking for differences
             if (_oldText == _newText)
             {
+                if (LinesContext > 0)
+                    return null;
                 return _newText;
             }
 
@@ -124,13 +144,36 @@ namespace HtmlDiff
 
             List<Operation> operations = Operations();
 
-            foreach (Operation item in operations)
+            if ((operations.Count == 0 || operations.Count == 1 && operations[0].Action == Action.Equal) && LinesContext > 0)
+                return null;
+
+            if (operations.Count > 0 && operations[0].Action != Action.Equal && LinesContext > 0)
             {
-                PerformOperation(item);
+                _startSectionAdded = true;
+                _content.AppendFormat("<div class=\"{0}\">  <!-- start diff section -->\r\n", ContextSectionClass);
             }
 
+            bool changesAfter = false;
+            for (int nItem = 0; nItem < operations.Count; nItem++)
+            {
+                Operation item = operations[nItem];
+                changesAfter = false;
+                if (nItem + 1 < operations.Count && operations[nItem + 1].Action != Action.Equal)
+                    changesAfter = true;
+                PerformOperation(item, changesAfter);
+            }
+
+            // Put in an end section
+            if (LinesContext > 0 && _startSectionAdded)
+                _content.Append("</div> <!-- end diff section -->\r\n\r\n");
+
+            // Remove any empty sections
+            if (LinesContext > 0)
+                _content.Replace(String.Format("<div class=\"{0}\">  <!-- start diff section -->\r\n</div> <!-- end diff section -->\r\n\r\n", ContextSectionClass), "");
             return _content.ToString();
         }
+
+        bool _startSectionAdded = false;
 
         /// <summary>
         /// Uses <paramref name="expression"/> to group text together so that any change detected within the group is treated as a single block
@@ -154,16 +197,16 @@ namespace HtmlDiff
             _newText = null;
         }
 
-        private void PerformOperation(Operation operation)
+        private void PerformOperation(Operation operation, bool changesAfter)
         {
 #if DEBUG
-            operation.PrintDebugInfo(_oldWords, _newWords);
+       //     operation.PrintDebugInfo(_oldWords, _newWords);
 #endif
 
             switch (operation.Action)
             {
                 case Action.Equal:
-                    ProcessEqualOperation(operation);
+                    ProcessEqualOperation(operation, changesAfter);
                     break;
                 case Action.Delete:
                     ProcessDeleteOperation(operation, "diffdel");
@@ -197,11 +240,55 @@ namespace HtmlDiff
             InsertTag("del", cssClass, text);
         }
 
-        private void ProcessEqualOperation(Operation operation)
+        private void ProcessEqualOperation(Operation operation, bool changesAfter)
         {
             string[] result =
                 _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToArray();
-            _content.Append(String.Join("", result));
+            if (LinesContext > 0)
+            {
+                int linesInSection = result.Count(m => m.StartsWith("\r\n"));
+                if (linesInSection > LinesContext * 2) // Only put breaks in if the gap is bigger than the size of the content
+                {
+                    // Need to split the context down.
+                    int lines=0;
+                    foreach (var item in result)
+                    {
+                        if (lines < LinesContext || lines > linesInSection-LinesContext)
+                            _content.Append(item);
+                        if (item.StartsWith("\r\n"))
+                            lines++;
+
+                        // Close the previous context
+                        if (lines == LinesContext && _startSectionAdded)
+                        {
+                            _startSectionAdded = false;
+                            _content.Append("</div> <!-- end diff section -->\r\n\r\n");
+                            if (!changesAfter)
+                                return;
+                        }
+
+                        // Now start the new context
+                        if (lines == linesInSection - LinesContext && !_startSectionAdded)
+                        {
+                            _startSectionAdded = true;
+                            _content.AppendFormat("<div class=\"{0}\">  <!-- start diff section -->\r\n", ContextSectionClass);
+                        }
+                    }
+                }
+                else
+                {
+                    if (!_startSectionAdded)
+                    {
+                        _startSectionAdded = true;
+                        _content.AppendFormat("<div class=\"{0}\">  <!-- start diff section -->\r\n", ContextSectionClass);
+                    }
+                    _content.Append(String.Join("", result));
+                }
+            }
+            else
+            {
+                _content.Append(String.Join("", result));
+            }
         }
 
 

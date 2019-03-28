@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="String1" xml:space="preserve">
+    <value>&lt;DIV class="e" xmlns:fhir="http://hl7.org/fhir"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;entry&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;fullUrl&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;https://localhost:44346/fhir/Questionnaire/demo-scoring/_history/8&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;resource&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;Questionnaire&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;id&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;demo-scoring&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;meta&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;versionId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;8&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;lastUpdated&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;2016-03-25T08:41:54.54+11:00&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;meta&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;status&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;generated&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;div&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;
+  &lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;
+	  b&lt;/SPAN&gt;
+  &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;SPAN class="tx"&gt;
+	  Scoring Demonstation to test DIFF display&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;
+	  &lt;SPAN class="t"&gt;
+	  b&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="tx"&gt;
+                              (new line of content)
+		&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;div&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;contained&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;ValueSet&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;id&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;7b4df9d4-476c-4af5-a1f3-78d664ec7541&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;name&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ1&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;codeSystem&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;system&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;bd2280ae-e821-476b-bed7-ea8aba2985aa&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Y&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Yes&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;N&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;No&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;codeSystem&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;ValueSet&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;contained&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;contained&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;ValueSet&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;id&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;c3b93195-3959-4958-b5b1-408e62bccad2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;name&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;codeSystem&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;system&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;f69573b8-cb63-4d31-85a4-23ac784735ab&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Never&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Once/twice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;3&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;3&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em...desire or urge to use tobacco?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#adf39cde-6d81-4300-a393-0acc09913fb5&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ3&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q4&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;During the past three months how often has your use of tobacco led to health, social, legal or financial problems?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#3e01a1d0-b7d3-4afe-83c1-f97747f24124&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ4&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q5&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Has a friend or relative or anyone else ever expressed concern about your use of tobacco?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#89b76c96-5dc7-4fe1-a339-e043a571e0fb&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ6&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q6&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Have you ever tried and failed to control, cut down or stop using tobacco?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#f8973a4d-3812-4c00-a0ef-099083902442&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ7&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-aggregate&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q3&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q4&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q5&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q6&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueCoding&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;sum&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueCoding&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;calculatedscore&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Total&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;decimal&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;group&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;Questionnaire&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;resource&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;request&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;method&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;PUT&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Questionnaire/demo-scoring/_history/8&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;request&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;entry&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>&lt;DIV class="e" xmlns:fhir="http://hl7.org/fhir"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;entry&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;fullUrl&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;https://localhost:44346/fhir/Questionnaire/demo-scoring/_history/7&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;resource&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;Questionnaire&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;id&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;demo-scoring&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;meta&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;versionId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;7&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;lastUpdated&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;2016-03-25T08:38:03.667+11:00&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;meta&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;status&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;generated&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;div&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;
+  &lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;
+	  b&lt;/SPAN&gt;
+  &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;SPAN class="tx"&gt;
+	  Scoring Demonstation to test DIFF display&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;
+	  &lt;SPAN class="t"&gt;
+	  b&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="tx"&gt;
+                              (new line of content)
+		&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;div&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;contained&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;ValueSet&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;id&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;7b4df9d4-476c-4af5-a1f3-78d664ec7541&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;name&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ1&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;codeSystem&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;system&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;bd2280ae-e821-476b-bed7-ea8aba2985aa&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Y&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Yes&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;N&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;No&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;-1&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;M&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Maybe&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;codeSystem&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;ValueSet&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;contained&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;contained&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;ValueSet&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;id&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;c3b93195-3959-4958-b5b1-408e62bccad2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;name&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;codeSystem&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;system&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;f69573b8-cb63-4d31-85a4-23ac784735ab&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;0&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Never&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;concept&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-weightedValue&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueDecimal&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;abstract&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;...desire or urge to use tobacco?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#adf39cde-6d81-4300-a393-0acc09913fb5&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ3&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q4&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;During the past three months how often has your use of tobacco led to health, social, legal or financial problems?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#3e01a1d0-b7d3-4afe-83c1-f97747f24124&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ4&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q5&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Has a friend or relative or anyone else ever expressed concern about your use of tobacco?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#89b76c96-5dc7-4fe1-a339-e043a571e0fb&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ6&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q6&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Have you ever tried and failed to control, cut down or stop using tobacco?&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;choice&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;repeats&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;false&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;reference&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;#f8973a4d-3812-4c00-a0ef-099083902442&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;display&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;TobaccoQ7&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;options&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-hcx-aggregate&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q2&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q3&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q4&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q5&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;question&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueString&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;q6&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueCoding&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;code&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;sum&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;valueCoding&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;extension&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;linkId&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;calculatedscore&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;text&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Total&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;type&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;decimal&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;question&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;group&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;Questionnaire&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;resource&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV class="e"&gt;&lt;DIV class="c" STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;span class="b"&gt; &lt;/span&gt; &lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;request&lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;DIV&gt;
+	  &lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;method&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;PUT&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;DIV class="e"&gt;&lt;DIV STYLE="margin-left:1em;text-indent:-2em"&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;lt;&lt;/SPAN&gt;&lt;SPAN class="t"&gt;url&lt;/SPAN&gt;&lt;SPAN class="t"&gt;value&lt;/SPAN&gt;&lt;SPAN class="m"&gt;="&lt;/SPAN&gt;&lt;B&gt;Questionnaire/demo-scoring/_history/7&lt;/B&gt;&lt;SPAN class="m"&gt;"&lt;/SPAN&gt;&lt;SPAN class="m"&gt;/&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;request&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;
+
+
+  &lt;DIV&gt;&lt;SPAN class="b"&gt; &lt;/SPAN&gt; &lt;SPAN class="m"&gt;&amp;lt;/&lt;/SPAN&gt;&lt;SPAN class="t"&gt;entry&lt;/SPAN&gt;&lt;SPAN class="m"&gt;&amp;gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+  &lt;/DIV&gt;&lt;/DIV&gt;</value>
+  </data>
+</root>
