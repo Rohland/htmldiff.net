@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/brianpos/htmldiff.net</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/brianpos/htmldiff.net/blob/master/license.txt</PackageLicenseUrl>
+    <Description>A library for comparing two HTML files/snippets and highlighting the differences using simple HTML.
+(this is a fork of Rohland de Charmoy's HtmlDiff library, with lines of context to include, and compiled for netcore2)</Description>
+    <Authors>Brian Postlethwaite</Authors>
+    <RepositoryUrl>https://github.com/brianpos/htmldiff.net</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageReleaseNotes>This is a slightly updated version that better supports XML diffs, with a context number of lines</PackageReleaseNotes>
+    <Company />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\HtmlDiff\Action.cs" Link="Action.cs" />
+    <Compile Include="..\HtmlDiff\Diff.cs" Link="Diff.cs" />
+    <Compile Include="..\HtmlDiff\Match.cs" Link="Match.cs" />
+    <Compile Include="..\HtmlDiff\MatchFinder.cs" Link="MatchFinder.cs" />
+    <Compile Include="..\HtmlDiff\MatchOptions.cs" Link="MatchOptions.cs" />
+    <Compile Include="..\HtmlDiff\Mode.cs" Link="Mode.cs" />
+    <Compile Include="..\HtmlDiff\Operation.cs" Link="Operation.cs" />
+    <Compile Include="..\HtmlDiff\Utils.cs" Link="Utils.cs" />
+    <Compile Include="..\HtmlDiff\WordSplitter.cs" Link="WordSplitter.cs" />
+  </ItemGroup>
+
+</Project>
