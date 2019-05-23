@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("HtmlDiff")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A library for comparing two HTML files/snippets and highlighting the differences using simple HTML.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Rohland de Charmoy")]
 [assembly: AssemblyProduct("HtmlDiff")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2009")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

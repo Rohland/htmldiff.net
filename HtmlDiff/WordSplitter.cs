@@ -11,22 +11,19 @@ namespace HtmlDiff
         /// <summary>
         /// Converts Html text into a list of words
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="blockExpressions"></param>
-        /// <returns></returns>
-        public static string[] ConvertHtmlToListOfWords(string text, List<Regex> blockExpressions)
+        public static string[] ConvertHtmlToListOfWords(
+            string text,
+            IList<Regex> blockExpressions)
         {
             var mode = Mode.Character;
             var currentWord = new List<char>();
             var words = new List<string>();
+            var blockLocations = FindBlocks(text, blockExpressions);
+            var isBlockCheckRequired = blockLocations.Any();
+            var isGrouping = false;
+            var groupingUntil = -1;
 
-            Dictionary<int, int> blockLocations = FindBlocks(text, blockExpressions);
-
-            bool isBlockCheckRequired = blockLocations.Any();
-            bool isGrouping = false;
-            int groupingUntil = -1;
-
-            for (int index = 0; index < text.Length; index++)
+            for (var index = 0; index < text.Length; index++)
             {
                 var character = text[index];
 
@@ -244,11 +241,11 @@ namespace HtmlDiff
         /// <summary>
         /// Finds any blocks that need to be grouped
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="blockExpressions"></param>
-        private static Dictionary<int, int> FindBlocks(string text, List<Regex> blockExpressions)
+        private static Dictionary<int, int> FindBlocks(
+            string text, 
+            IList<Regex> blockExpressions)
         {
-            Dictionary<int, int> blockLocations = new Dictionary<int, int>();
+            var blockLocations = new Dictionary<int, int>();
             
             if (blockExpressions == null)
             {
@@ -264,9 +261,11 @@ namespace HtmlDiff
                     {
                         blockLocations.Add(match.Index, match.Index + match.Length);
                     }
-                    catch (ArgumentException e)
+                    catch (ArgumentException)
                     {
-                        throw new ArgumentException("One or more block expressions result in a text sequence that overlaps. Current expression: " + exp.ToString());
+                        var msg =
+                            $"One or more block expressions result in a text sequence that overlaps. Current expression: {exp}";
+                        throw new ArgumentException(msg);
                     }
                 }
             }

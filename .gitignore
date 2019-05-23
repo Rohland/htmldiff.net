@@ -31,3 +31,4 @@ _ReSharper*/
 *.[rR]e[sS]harper
 *.sln.docstates
 .vs
+.idea
