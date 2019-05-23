@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <PackageVersion>1.4.0</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -10,7 +11,7 @@
     <PackageId>htmldiff.net</PackageId>
     <Authors>Rohland de Charmoy</Authors>
     <PackageProjectUrl>https://github.com/Rohland/htmldiff.net</PackageProjectUrl>
-    <PackageReleaseNotes>Version 1.1 - Initial Nuget Release</PackageReleaseNotes>
+    <PackageReleaseNotes>Version 1.4 - dotnet standard2.0 support</PackageReleaseNotes>
     <PackageTags>html htmldiff diff compare</PackageTags>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
