@@ -1,17 +1,49 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace HtmlDiff
 {
     public static class Utils
     {
-        private static Regex openingTagRegex = new Regex("^\\s*<[^>]+>\\s*$", RegexOptions.Compiled);
-        private static Regex closingTagTexRegex = new Regex("^\\s*</[^>]+>\\s*$", RegexOptions.Compiled);
-        private static Regex tagWordRegex = new Regex(@"<[^\s>]+", RegexOptions.Compiled);
-        private static Regex whitespaceRegex = new Regex("^(\\s|&nbsp;)+$", RegexOptions.Compiled);
-        private static Regex wordRegex = new Regex(@"[\w\#@]+", RegexOptions.Compiled | RegexOptions.ECMAScript);
+        private static Regex openingTagRegex = new Regex(
+            "^\\s*<[^>]+>\\s*$",
+            RegexOptions.Compiled);
+        private static Regex closingTagTexRegex = new Regex(
+            "^\\s*</[^>]+>\\s*$",
+            RegexOptions.Compiled);
+        private static Regex tagWordRegex = new Regex(
+            @"<[^\s>]+",
+            RegexOptions.Compiled);
+        private static Regex whitespaceRegex = new Regex(
+            "^(\\s|&nbsp;)+$",
+            RegexOptions.Compiled);
+        private static Regex wordRegex = new Regex(
+            @"[\w\#@]+",
+            RegexOptions.Compiled | RegexOptions.ECMAScript);
+        private static Regex tagRegex = new Regex(
+            @"<([^\s>/]+)",
+            RegexOptions.Compiled);
 
         private static readonly string[] SpecialCaseWordTags = { "<img" };
+
+        private static readonly HashSet<string> SelfClosingTags = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "br",
+            "area",
+            "base",
+            "embed",
+            "hr",
+            "iframe",
+            "img",
+            "input",
+            "link",
+            "meta",
+            "param",
+            "source",
+            "track"
+        };
 
         public static bool IsTag(string item)
         {
@@ -31,12 +63,30 @@ namespace HtmlDiff
 
         public static string StripTagAttributes(string word)
         {
-            string tag = tagWordRegex.Match(word).Value;
+            var tag = tagWordRegex.Match(word).Value;
             word = tag + (word.EndsWith("/>") ? "/>" : ">");
             return word;
         }
 
-        public static string WrapText(string text, string tagName, string cssClass)
+        public static bool TryGetTagName(
+            string text,
+            out string tag)
+        {
+            tag = null;
+            var match = tagRegex.Match(text);
+            if (!match.Success || match.Groups.Count < 2)
+            {
+                return false;
+            }
+
+            tag = match.Groups[1].Value;
+            return true;
+        }
+
+        public static string WrapText(
+            string text,
+            string tagName,
+            string cssClass)
         {
             return string.Format("<{0} class='{1}'>{2}</{0}>", tagName, cssClass, text);
         }
@@ -83,6 +133,11 @@ namespace HtmlDiff
         public static bool IsWord(char text)
         {
             return wordRegex.IsMatch(new string(new[] { text }));
+        }
+
+        public static bool IsValidSelfClosingTag(string tag)
+        {
+            return SelfClosingTags.Contains(tag);
         }
     }
 }

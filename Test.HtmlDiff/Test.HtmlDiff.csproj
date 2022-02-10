@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Test.HtmlDiff</RootNamespace>
     <AssemblyName>Test.HtmlDiff</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bugs\DiffTests.cs" />
+    <Compile Include="Bugs\SelfClosingTags.cs" />
     <Compile Include="HtmlDiffSpecTests.cs" />
     <Compile Include="PerformanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HtmlDiff\HtmlDiff.csproj">

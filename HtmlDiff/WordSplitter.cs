@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace HtmlDiff
@@ -18,7 +17,9 @@ namespace HtmlDiff
             var mode = Mode.Character;
             var currentWord = new List<char>();
             var words = new List<string>();
-            var blockLocations = FindBlocks(text, blockExpressions);
+            var blockLocations = FindBlocks(
+                text,
+                blockExpressions);
             var isBlockCheckRequired = blockLocations.Any();
             var isGrouping = false;
             var groupingUntil = -1;
@@ -38,14 +39,15 @@ namespace HtmlDiff
                     }
 
                     // Check if we need to group the next text sequence/block
-                    int until = 0;
+                    var until = 0;
                     if (blockLocations.TryGetValue(index, out until))
                     {
                         isGrouping = true;
                         groupingUntil = until;
                     }
 
-                    // if we are grouping, then we don't care about what type of character we have, it's going to be treated as a word
+                    // if we are grouping, then we don't care about what type of character we have,
+                    // it's going to be treated as a word
                     if (isGrouping)
                     {
                         currentWord.Add(character);
@@ -111,10 +113,13 @@ namespace HtmlDiff
                         if (Utils.IsEndOfTag(character))
                         {
                             currentWord.Add(character);
-                            words.Add(new string(currentWord.ToArray()));
+                            var tags = ExpandTagIfNeeded(currentWord.ToArray());
+                            words.AddRange(tags);
                             currentWord.Clear();
 
-                            mode = Utils.IsWhiteSpace(character) ? Mode.Whitespace : Mode.Character;
+                            mode = Utils.IsWhiteSpace(character) 
+                                ? Mode.Whitespace
+                                : Mode.Character;
                         }
                         else
                         {
@@ -238,6 +243,34 @@ namespace HtmlDiff
             return words.ToArray();
         }
 
+        private static string[] ExpandTagIfNeeded(char[] chars)
+        {
+            var tag = new string(chars);
+            var isSelfClosing = chars[chars.Length - 2] == '/';
+            if (!isSelfClosing)
+            {
+                return new [] {tag};
+            }
+
+            if (!Utils.TryGetTagName(
+                tag,
+                out var tagName))
+            {
+                return new [] {tag};
+            }
+
+            if (Utils.IsValidSelfClosingTag(tagName))
+            {
+                return new[] {tag};
+            }
+
+            return new[]
+            {
+                $"{new string(chars.Take(chars.Length - 2).ToArray())}>",
+                $"</{tagName}>"
+            };
+        }
+
         /// <summary>
         /// Finds any blocks that need to be grouped
         /// </summary>
@@ -246,12 +279,10 @@ namespace HtmlDiff
             IList<Regex> blockExpressions)
         {
             var blockLocations = new Dictionary<int, int>();
-            
             if (blockExpressions == null)
             {
                 return blockLocations;
             }
-
             foreach (var exp in blockExpressions)
             {
                 var matches = exp.Matches(text);
