@@ -105,8 +105,8 @@ namespace Test.HtmlDiff
         [Test]
         public void Execute_WithGroupCandididatesAndDuplicateGroupsConfigured_ArgumentExceptionThrown()
         {
-            string oldText = "This is a date 1 Jan 2016 that will change";
-            string newText = "This is a date 22 Feb 2017 that won't change";
+            var oldText = "This is a date 1 Jan 2016 that will change";
+            var newText = "This is a date 22 Feb 2017 that won't change";
             var diff = new global::HtmlDiff.HtmlDiff(oldText, newText);
 
             // purposefully cause an overlapping expression

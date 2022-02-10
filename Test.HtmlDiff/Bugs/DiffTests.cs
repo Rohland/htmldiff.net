@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Test.HtmlDiff.Bugs
 {
@@ -15,8 +11,12 @@ namespace Test.HtmlDiff.Bugs
         {
             var oldText = "The Dealer.";
             var newText = "The Dealer info,";
-            var output = global::HtmlDiff.HtmlDiff.Execute(oldText, newText);
-            Assert.AreEqual("The Dealer<del class='diffmod'>.</del><ins class='diffmod'>&nbsp;info,</ins>", output);
+            var output = global::HtmlDiff.HtmlDiff.Execute(
+                oldText,
+                newText);
+            Assert.AreEqual(
+                "The Dealer<del class='diffmod'>.</del><ins class='diffmod'>&nbsp;info,</ins>",
+                output);
         }
     }
 }
