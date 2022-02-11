@@ -12,7 +12,7 @@ namespace Demo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string oldText = @"<p><i>This is</i> some sample text to <strong>demonstrate</strong> the capability of the <strong>HTML diff tool</strong>.</p>
+            var oldText = @"<p><i>This is</i> some sample text to <strong>demonstrate</strong> the capability of the <strong>HTML diff tool</strong>.</p>
                                 <p>It is based on the <b>Ruby</b> implementation found <a href='http://github.com/myobie/htmldiff'>here</a>. Note how the link has no tooltip</p>
                                 <p>What about a number change: 123456?</p>
                                 <table cellpadding='0' cellspacing='0'>
@@ -23,7 +23,7 @@ namespace Demo
                                 <br><br>
                                 This date: 1 Jan 2016 is about to change (note how it is treated as a block change!)";
 
-            string newText = @"<p>This is some sample <strong>text to</strong> demonstrate the awesome capabilities of the <strong>HTML <u>diff</u> tool</strong>.</p><br/><br/>Extra spacing here that was not here before.
+            var newText = @"<p>This is some sample <strong>text to</strong> demonstrate the awesome capabilities of the <strong>HTML <u>diff</u> tool</strong>.</p><br/><br/>Extra spacing here that was not here before.
                                 <p>It is <i>based</i> on the Ruby implementation found <a title='Cool tooltip' href='http://github.com/myobie/htmldiff'>here</a>. Note how the link has a tooltip now and the HTML diff algorithm has preserved formatting.</p>
                                 <p>What about a number change: 123356?</p>
                                 <table cellpadding='0' cellspacing='0'>
@@ -33,7 +33,7 @@ namespace Demo
                                 <br><br>
                                 This date: 22 Feb 2017 is about to change (note how it is treated as a block change!)";
 
-            HtmlDiff.HtmlDiff diffHelper = new HtmlDiff.HtmlDiff(oldText, newText);
+            var diffHelper = new HtmlDiff.HtmlDiff(oldText, newText);
             litOldText.Text = oldText;
             litNewText.Text = newText;
 

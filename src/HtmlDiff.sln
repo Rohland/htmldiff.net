@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDiff", "HtmlDiff\HtmlDi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{8827AB5E-7C08-49DE-BF3C-C2D5B7AD4990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.HtmlDiff", "Test.HtmlDiff\Test.HtmlDiff.csproj", "{87C1F5ED-A79B-410F-9BBF-4D113A1A0090}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlDiff.Tests", "HtmlDiff.Tests\HtmlDiff.Tests.csproj", "{87C1F5ED-A79B-410F-9BBF-4D113A1A0090}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

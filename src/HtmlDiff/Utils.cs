@@ -31,7 +31,7 @@ namespace HtmlDiff
 
         public static string StripTagAttributes(string word)
         {
-            string tag = tagWordRegex.Match(word).Value;
+            var tag = tagWordRegex.Match(word).Value;
             word = tag + (word.EndsWith("/>") ? "/>" : ">");
             return word;
         }

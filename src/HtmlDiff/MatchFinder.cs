@@ -42,7 +42,7 @@ namespace HtmlDiff
         {
             _wordIndices = new Dictionary<string, List<int>>();
             var block = new Queue<string>(_options.BlockSize);
-            for (int i = _startInNew; i < _endInNew; i++)
+            for (var i = _startInNew; i < _endInNew; i++)
             {
                 // if word is a tag, we should ignore attributes as attribute changes are not supported (yet)
                 var word = NormalizeForIndex(_newWords[i]);
@@ -102,14 +102,14 @@ namespace HtmlDiff
             if (_wordIndices.Count == 0)
                 return null;
 
-            int bestMatchInOld = _startInOld;
-            int bestMatchInNew = _startInNew;
-            int bestMatchSize = 0;
+            var bestMatchInOld = _startInOld;
+            var bestMatchInNew = _startInNew;
+            var bestMatchSize = 0;
 
             var matchLengthAt = new Dictionary<int, int>();
             var block = new Queue<string>(_options.BlockSize);
 
-            for (int indexInOld = _startInOld; indexInOld < _endInOld; indexInOld++)
+            for (var indexInOld = _startInOld; indexInOld < _endInOld; indexInOld++)
             {
                 var word = NormalizeForIndex(_oldWords[indexInOld]);
                 var index = PutNewWord(block, word, _options.BlockSize);
@@ -125,9 +125,9 @@ namespace HtmlDiff
                     continue;
                 }
 
-                foreach (int indexInNew in _wordIndices[index])
+                foreach (var indexInNew in _wordIndices[index])
                 {
-                    int newMatchLength = (matchLengthAt.ContainsKey(indexInNew - 1) ? matchLengthAt[indexInNew - 1] : 0) +
+                    var newMatchLength = (matchLengthAt.ContainsKey(indexInNew - 1) ? matchLengthAt[indexInNew - 1] : 0) +
                                          1;
                     newMatchLengthAt[indexInNew] = newMatchLength;
 
