@@ -17,6 +17,11 @@
     <PackageLicenseFile>license.txt</PackageLicenseFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\license.txt">
       <Pack>True</Pack>
