@@ -21,4 +21,5 @@
     <PackageVersion>1.4</PackageVersion>
     <FileVersion>1.4</FileVersion>
   </PropertyGroup>
+  <Import Project="..\MonoForFramework.targets"/>
 </Project>
