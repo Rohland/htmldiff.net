@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45;net462</TargetFrameworks>
     <PackageVersion>1.4.0</PackageVersion>
   </PropertyGroup>
 
@@ -13,15 +13,13 @@
     <PackageProjectUrl>https://github.com/Rohland/htmldiff.net</PackageProjectUrl>
     <PackageReleaseNotes>Version 1.4 - dotnet standard2.0 support</PackageReleaseNotes>
     <PackageTags>html htmldiff diff compare</PackageTags>
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <AssemblyTitle>HtmlDiff</AssemblyTitle>
+    <Description>A library for comparing two HTML files/snippets and highlighting the differences using simple HTML.</Description>
+    <Company>Rohland de Charmoy</Company>
+    <Product>HtmlDIff</Product>
+    <PackageVersion>1.4</PackageVersion>
+    <FileVersion>1.4</FileVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\license.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
+  <Import Project="..\MonoForFramework.targets"/>
 </Project>

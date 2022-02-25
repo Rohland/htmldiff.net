@@ -38,7 +38,7 @@ namespace HtmlDiff
                     }
 
                     // Check if we need to group the next text sequence/block
-                    int until = 0;
+                    var until = 0;
                     if (blockLocations.TryGetValue(index, out until))
                     {
                         isGrouping = true;

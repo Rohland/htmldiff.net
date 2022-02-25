@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -34,19 +33,19 @@ namespace HtmlDiff
             {"</s>",0}
         };
 
-        private static readonly Regex _specialCaseOpeningTagRegex = new Regex(
+        private static readonly Regex SpecialCaseOpeningTagRegex = new Regex(
             "<((strong)|(b)|(i)|(em)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s))[\\>\\s]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
 
         /// <summary>
         /// Tracks opening and closing formatting tags to ensure that we don't inadvertently generate invalid html during the diff process.
         /// </summary>
-        private Stack<string> _specialTagDiffStack; 
+        private readonly Stack<string> _specialTagDiffStack; 
 
         private string[] _newWords;
         private string[] _oldWords;
         private int _matchGranularity;
-        private List<Regex> _blockExpressions; 
+        private readonly List<Regex> _blockExpressions; 
 
         /// <summary>
         /// Defines how to compare repeating words. Valid values are from 0 to 1.
@@ -122,9 +121,9 @@ namespace HtmlDiff
 
             _matchGranularity = Math.Min(MatchGranularityMaximum, Math.Min(_oldWords.Length, _newWords.Length));
 
-            List<Operation> operations = Operations();
+            var operations = Operations();
 
-            foreach (Operation item in operations)
+            foreach (var item in operations)
             {
                 PerformOperation(item);
             }
@@ -187,19 +186,19 @@ namespace HtmlDiff
 
         private void ProcessInsertOperation(Operation operation, string cssClass)
         {
-            List<string> text = _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList();
+            var text = _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList();
             InsertTag("ins", cssClass, text);
         }
 
         private void ProcessDeleteOperation(Operation operation, string cssClass)
         {
-            List<string> text = _oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
+            var text = _oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
             InsertTag("del", cssClass, text);
         }
 
         private void ProcessEqualOperation(Operation operation)
         {
-            string[] result =
+            var result =
                 _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToArray();
             _content.Append(String.Join("", result));
         }
@@ -234,21 +233,21 @@ namespace HtmlDiff
                     break;
                 }
 
-                string[] nonTags = ExtractConsecutiveWords(words, x => !Utils.IsTag(x));
+                var nonTags = ExtractConsecutiveWords(words, x => !Utils.IsTag(x));
 
-                string specialCaseTagInjection = string.Empty;
-                bool specialCaseTagInjectionIsBefore = false;
+                var specialCaseTagInjection = string.Empty;
+                var specialCaseTagInjectionIsBefore = false;
 
                 if (nonTags.Length != 0)
                 {
-                    string text = Utils.WrapText(string.Join("", nonTags), tag, cssClass);
+                    var text = Utils.WrapText(string.Join("", nonTags), tag, cssClass);
 
                     _content.Append(text);
                 }
                 else
                 {
                     // Check if the tag is a special case
-                    if (_specialCaseOpeningTagRegex.IsMatch(words[0]))
+                    if (SpecialCaseOpeningTagRegex.IsMatch(words[0]))
                     {
                         _specialTagDiffStack.Push(words[0]);
                         specialCaseTagInjection = "<ins class='mod'>";
@@ -257,7 +256,7 @@ namespace HtmlDiff
                             words.RemoveAt(0);
 
                             // following tags may be formatting tags as well, follow through
-                            while (words.Count > 0 && _specialCaseOpeningTagRegex.IsMatch(words[0]))
+                            while (words.Count > 0 && SpecialCaseOpeningTagRegex.IsMatch(words[0]))
                             {
                                 words.RemoveAt(0);   
                             }
@@ -312,9 +311,9 @@ namespace HtmlDiff
         {
             int? indexOfFirstTag = null;
 
-            for (int i = 0; i < words.Count; i++)
+            for (var i = 0; i < words.Count; i++)
             {
-                string word = words[i];
+                var word = words[i];
 
                 if (i == 0 && word == " ")
                 {
@@ -330,7 +329,7 @@ namespace HtmlDiff
 
             if (indexOfFirstTag != null)
             {
-                string[] items = words.Where((s, pos) => pos >= 0 && pos < indexOfFirstTag).ToArray();
+                var items = words.Where((s, pos) => pos >= 0 && pos < indexOfFirstTag).ToArray();
                 if (indexOfFirstTag.Value > 0)
                 {
                     words.RemoveRange(0, indexOfFirstTag.Value);
@@ -339,7 +338,7 @@ namespace HtmlDiff
             }
             else
             {
-                string[] items = words.Where((s, pos) => pos >= 0 && pos <= words.Count).ToArray();
+                var items = words.Where((s, pos) => pos >= 0 && pos <= words.Count).ToArray();
                 words.RemoveRange(0, words.Count);
                 return items;
             }
@@ -358,10 +357,10 @@ namespace HtmlDiff
             //If distance between left and right matches is 4 times longer than length of current match then it is considered as orphan
             var mathesWithoutOrphans = RemoveOrphans(matches);
 
-            foreach (Match match in mathesWithoutOrphans)
+            foreach (var match in mathesWithoutOrphans)
             {
-                bool matchStartsAtCurrentPositionInOld = (positionInOld == match.StartInOld);
-                bool matchStartsAtCurrentPositionInNew = (positionInNew == match.StartInNew);
+                var matchStartsAtCurrentPositionInOld = (positionInOld == match.StartInOld);
+                var matchStartsAtCurrentPositionInNew = (positionInNew == match.StartInNew);
 
                 Action action;
 
@@ -467,7 +466,7 @@ namespace HtmlDiff
             int endInNew,
             List<Match> matchingBlocks)
         {
-            Match match = FindMatch(startInOld, endInOld, startInNew, endInNew);
+            var match = FindMatch(startInOld, endInOld, startInNew, endInNew);
 
             if (match != null)
             {
@@ -489,7 +488,7 @@ namespace HtmlDiff
         {
             // For large texts it is more likely that there is a Match of size bigger than maximum granularity.
             // If not then go down and try to find it with smaller granularity.
-            for (int i = _matchGranularity; i > 0 ; i--)
+            for (var i = _matchGranularity; i > 0 ; i--)
             {
                 var options = new MatchOptions
                 {

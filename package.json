@@ -1,0 +1,17 @@
+{
+  "name": "htmldiff.net",
+  "version": "1.0.0",
+  "description": "A library for comparing two HTML files/snippets and highlighting the differences using simple HTML.",
+  "main": "index.js",
+  "scripts": {
+    "zarro": "cross-env DOTNET_CORE=1 BUILD_EXCLUDE=src/Demo.sln zarro",
+    "build": "run-s \"zarro build\"",
+    "test": "run-s \"zarro test-dotnet\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "zarro": "^1.95.0"
+  }
+}
