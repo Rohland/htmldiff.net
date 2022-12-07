@@ -12,6 +12,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "zarro": "^1.95.0"
+    "zarro": "^1.122.0"
   }
 }
