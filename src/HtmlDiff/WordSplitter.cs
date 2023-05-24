@@ -35,6 +35,15 @@ namespace HtmlDiff
                     {
                         groupingUntil = -1;
                         isGrouping = false;
+
+                        // We reached the end of the group, add the current word to the list
+                        // and start new search
+                        if (currentWord.Count != 0)
+                        {
+                            words.Add(new string(currentWord.ToArray()));
+                        }
+
+                        currentWord.Clear();
                     }
 
                     // Check if we need to group the next text sequence/block
