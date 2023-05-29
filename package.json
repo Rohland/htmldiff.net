@@ -6,12 +6,13 @@
   "scripts": {
     "zarro": "cross-env DOTNET_CORE=1 BUILD_EXCLUDE=src/Demo.sln zarro",
     "build": "run-s \"zarro build\"",
+    "build-release": "cross-env BUILD_CONFIGURATION=Release run-s \"build\"",
     "test": "run-s \"zarro test-dotnet\""
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "zarro": "^1.95.0"
+    "zarro": "^1.124.0"
   }
 }
