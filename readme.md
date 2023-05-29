@@ -66,3 +66,27 @@ diffHelper.AddBlockExpression(
   RegexOptions.IgnoreCase));
 var diff = diffHelper.Build();
 ```
+
+## Building and Testing (CLI)
+
+### Requirements
+
+* Node 14+
+
+Install dependencies: `npm install`
+
+### Building
+
+In the root folder of the repo:
+
+```bash
+npm run build
+```
+
+### Running Tests
+
+In the root folder of the repo:
+
+```bash
+npm test
+```
