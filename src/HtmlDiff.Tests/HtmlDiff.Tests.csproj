@@ -14,8 +14,8 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-    <PackageReference Include="Nunit" Version="3.13.2" />
-    <PackageReference Include="NExpect" Version="1.0.250" />
+    <PackageReference Include="Nunit" Version="3.13.3" />
+    <PackageReference Include="NExpect" Version="2.0.29" />
   </ItemGroup>
-  <Import Project="..\MonoForFramework.targets"/>
+  <Import Project="..\MonoForFramework.targets" />
 </Project>
