@@ -11,7 +11,7 @@ namespace HtmlDiff.Tests
         [Test]
         [TestCase("<td>(.*?)</td>", "<td>a b c</td><td>d e f</td>", new[] { "<td>a b c</td>", "<td>d e f</td>" })]
         [TestCase("<td>(.*?)</td>", "<td>a b</td><br/><td>c d</td>", new[] { "<td>a b</td>", "<br/>", "<td>c d</td>" })]
-        public void ConvertHtmlToListOfWords_WithCustomBlocks_WordsSplitEndOfGroup(
+        public void ConvertHtmlToListOfWords_WithCustomBlocks_WordsSplitByCustomGroups(
             string regex,
             string text,
             string[] expected)
