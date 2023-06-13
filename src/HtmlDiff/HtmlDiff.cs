@@ -30,11 +30,12 @@ namespace HtmlDiff
             {"</sub>",0},
             {"</sup>",0},
             {"</strike>",0},
-            {"</s>",0}
+            {"</s>",0},
+            {"</span>", 0}
         };
 
         private static readonly Regex SpecialCaseOpeningTagRegex = new Regex(
-            "<((strong)|(b)|(i)|(em)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s))[\\>\\s]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            "<((strong)|(b)|(i)|(em)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s)|(span))[\\>\\s]+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
 
         /// <summary>
@@ -268,7 +269,7 @@ namespace HtmlDiff
                         var openingTag = _specialTagDiffStack.Count == 0 ? null : _specialTagDiffStack.Pop();
 
                         // If we didn't have an opening tag, and we don't have a match with the previous tag used 
-                        if (openingTag == null || openingTag != words.Last().Replace("/", ""))
+                        if (openingTag == null || Utils.GetTagName(openingTag) != Utils.GetTagName(words.Last()))
                         {
                             // do nothing
                         }
