@@ -40,6 +40,14 @@ namespace HtmlDiff.Tests
             "Some <strong><i>formatted</i></strong> text",
             "Some formatted text",
             "Some <ins class='mod'>formatted</ins> text")]
+        [TestCase(
+            "<table><tr><td>col1</td><td>col2</td></tr><tr><td>Data 1</td><td>Data 2</td></tr></table>",
+            "<table><tr><td>col1</td><td>col2</td></tr></table>",
+            "<table><tr><td>col1</td><td>col2</td></tr><tr><td><del class='diffdel'>Data 1</del></td><td><del class='diffdel'>Data 2</del></td></tr></table>")]
+        [TestCase(
+            "text",
+            "<span style=\"text-decoration: line-through;\">text</span>",
+            "<span style=\"text-decoration: line-through;\"><ins class='mod'>text</ins></span>")]
 
         // TODO: Don't speak Chinese, this needs to be validated
         [TestCase("这个是中文内容, CSharp is the bast", "这是中国语内容，CSharp is the best language.",
