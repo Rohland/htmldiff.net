@@ -12,6 +12,8 @@ namespace HtmlDiff
         /// This value defines balance between speed and memory utilization. The higher it is the faster it works and more memory consumes.
         /// </summary>
         private const int MatchGranularityMaximum = 4;
+        private const string DelTag = "del";
+        private const string InsTag = "ins";
 
         private readonly StringBuilder _content;
         private string _newText;
@@ -188,13 +190,13 @@ namespace HtmlDiff
         private void ProcessInsertOperation(Operation operation, string cssClass)
         {
             var text = _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToList();
-            InsertTag("ins", cssClass, text);
+            InsertTag(InsTag, cssClass, text);
         }
 
         private void ProcessDeleteOperation(Operation operation, string cssClass)
         {
             var text = _oldWords.Where((s, pos) => pos >= operation.StartInOld && pos < operation.EndInOld).ToList();
-            InsertTag("del", cssClass, text);
+            InsertTag(DelTag, cssClass, text);
         }
 
         private void ProcessEqualOperation(Operation operation)
@@ -247,12 +249,11 @@ namespace HtmlDiff
                 }
                 else
                 {
-                    // Check if the tag is a special case
                     if (SpecialCaseOpeningTagRegex.IsMatch(words[0]))
                     {
                         _specialTagDiffStack.Push(words[0]);
                         specialCaseTagInjection = "<ins class='mod'>";
-                        if (tag == "del")
+                        if (tag == DelTag)
                         {
                             words.RemoveAt(0);
 
@@ -263,23 +264,18 @@ namespace HtmlDiff
                             }
                         }
                     }
-
                     else if (_specialCaseClosingTags.ContainsKey(words[0]))
                     {
                         var openingTag = _specialTagDiffStack.Count == 0 ? null : _specialTagDiffStack.Pop();
-
-                        // If we didn't have an opening tag, and we don't have a match with the previous tag used 
-                        if (openingTag == null || Utils.GetTagName(openingTag) != Utils.GetTagName(words.Last()))
-                        {
-                            // do nothing
-                        }
-                        else
+                        var hasOpeningTag = !(openingTag is null);
+                        var openingAndClosingTagsMatch = Utils.GetTagName(openingTag) == Utils.GetTagName(words.Last());
+                        if (hasOpeningTag && openingAndClosingTagsMatch)
                         {
                             specialCaseTagInjection = "</ins>";
                             specialCaseTagInjectionIsBefore = true;
                         }
 
-                        if (tag == "del")
+                        if (tag == DelTag)
                         {
                             words.RemoveAt(0);
 

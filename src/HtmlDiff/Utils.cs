@@ -11,7 +11,7 @@ namespace HtmlDiff
         private static Regex tagWordRegex = new Regex(@"<[^\s>]+", RegexOptions.Compiled);
         private static Regex whitespaceRegex = new Regex("^(\\s|&nbsp;)+$", RegexOptions.Compiled);
         private static Regex wordRegex = new Regex(@"[\w\#@]+", RegexOptions.Compiled | RegexOptions.ECMAScript);
-        private static Regex tagRegex = new Regex(@"\s*</?(?<name>[^\s>]+)[^>]*>\s*", RegexOptions.Compiled);
+        private static Regex tagRegex = new Regex(@"</?(?<name>[^\s/>]+)[^>]*>", RegexOptions.Compiled);
 
         private static readonly string[] SpecialCaseWordTags = { "<img" };
 
@@ -79,6 +79,7 @@ namespace HtmlDiff
             {
                 return StripTagAttributes(word);
             }
+
             return word;
         }
 
@@ -89,13 +90,15 @@ namespace HtmlDiff
 
         public static string GetTagName(string word)
         {
-            var match = tagRegex.Match(word);
-
-            // returns empty string if it's not a tag
-            if (!match.Success)
-                return string.Empty;
-
-            return match.Groups["name"].Value.ToLower();
+            var noResult = string.Empty;
+            if (word is null)
+            {
+                return noResult;
+            }
+            var tagMatch = tagRegex.Match(word);
+            return tagMatch.Success
+                ? tagMatch.Groups["name"].Value.ToLower()
+                : noResult;
         }
     }
 }
