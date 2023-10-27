@@ -1,0 +1,8 @@
+# zarro defaults file:
+# place one VARIABLE=VALUE per line below
+# variables here will not override existing environment variables
+#   unless prepended with a bang, ie
+#     !VARIABLE=Value
+#   so this means anything you set in your package.json, eg with
+#   cross-env, will override what's in here unless you've specifically
+#   marked the setting in here as forced with !

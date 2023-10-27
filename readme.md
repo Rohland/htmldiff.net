@@ -71,7 +71,7 @@ var diff = diffHelper.Build();
 
 ### Requirements
 
-* Node 14+
+* Node 18+
 
 Install dependencies: `npm install`
 
@@ -89,4 +89,10 @@ In the root folder of the repo:
 
 ```bash
 npm test
+```
+
+### Release
+
+```bash
+npm run build-release
 ```

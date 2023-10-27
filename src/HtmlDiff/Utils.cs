@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace HtmlDiff
@@ -10,6 +11,7 @@ namespace HtmlDiff
         private static Regex tagWordRegex = new Regex(@"<[^\s>]+", RegexOptions.Compiled);
         private static Regex whitespaceRegex = new Regex("^(\\s|&nbsp;)+$", RegexOptions.Compiled);
         private static Regex wordRegex = new Regex(@"[\w\#@]+", RegexOptions.Compiled | RegexOptions.ECMAScript);
+        private static Regex tagRegex = new Regex(@"</?(?<name>[^\s/>]+)[^>]*>", RegexOptions.Compiled);
 
         private static readonly string[] SpecialCaseWordTags = { "<img" };
 
@@ -77,12 +79,26 @@ namespace HtmlDiff
             {
                 return StripTagAttributes(word);
             }
+
             return word;
         }
 
         public static bool IsWord(char text)
         {
             return wordRegex.IsMatch(new string(new[] { text }));
+        }
+
+        public static string GetTagName(string word)
+        {
+            var noResult = string.Empty;
+            if (word is null)
+            {
+                return noResult;
+            }
+            var tagMatch = tagRegex.Match(word);
+            return tagMatch.Success
+                ? tagMatch.Groups["name"].Value.ToLower()
+                : noResult;
         }
     }
 }
