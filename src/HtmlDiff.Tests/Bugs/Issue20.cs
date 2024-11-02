@@ -15,24 +15,24 @@ namespace HtmlDiff.Tests.Bugs
              "<div class=\"dumb\">Thiis a text <sup><ins class='mod'><ins class='diffins'>1</ins></ins></sup>without any sup-tags and other special things</div>")]
 
         // Inserting a new word at the end of the reformatted text
-        [TestCase("<span>text bleibt</span>",
-              "<span><strong>text bleibt Test</strong></span>",
-              "<span><strong><ins class='mod'>text bleibt<ins class='diffins'>&nbsp;Test</ins></ins></strong></span>")]
+        [TestCase("<span>text remains</span>",
+              "<span><strong>text remains Test</strong></span>",
+              "<span><strong><ins class='mod'>text remains<ins class='diffins'>&nbsp;Test</ins></ins></strong></span>")]
 
         // Inserting a new word at the end of a reformatted text and another word at the end outside the reformatted text
-        [TestCase("<span>text bleibt</span>",
-             "<span><strong>text bleibt Test</strong> Test</span>",
-             "<span><strong><ins class='mod'>text bleibt<ins class='diffins'>&nbsp;Test</ins></ins></strong><ins class='diffins'>&nbsp;Test</ins></span>")]
+        [TestCase("<span>text remains</span>",
+             "<span><strong>text remains Test</strong> Test</span>",
+             "<span><strong><ins class='mod'>text remains<ins class='diffins'>&nbsp;Test</ins></ins></strong><ins class='diffins'>&nbsp;Test</ins></span>")]
 
         // Twice reformatted text with an offset at the end
-        [TestCase("<span>text bleibt</span>",
-             "<span><strong><big>text </big>bleibt</strong></span>",
-             "<span><strong><big><ins class='mod'>text </big>bleibt</ins></strong></span>")]
+        [TestCase("<span>text remains</span>",
+             "<span><strong><big>text </big>remains</strong></span>",
+             "<span><strong><big><ins class='mod'>text </big>remains</ins></strong></span>")]
 
         // Inserting a new word at the beginning of a reformatted text.
-        [TestCase("<span>text bleibt</span>",
-             "<span><strong>Test text bleibt</strong></span>",
-             "<span><strong><ins class='mod'><ins class='diffins'>Test </ins>text bleibt</ins></strong></span>")]
+        [TestCase("<span>text remains</span>",
+             "<span><strong>Test text remains</strong></span>",
+             "<span><strong><ins class='mod'><ins class='diffins'>Test </ins>text remains</ins></strong></span>")]
         public void TestCase_Issue20_missing_closing_tag(string oldText, string newText, string expectedResult)
         {
             // Arrange
