@@ -35,14 +35,9 @@ namespace HtmlDiff.Tests.Bugs
              "<span><strong><ins class='mod'><ins class='diffins'>Test </ins>text remains</ins></strong></span>")]
         public void TestCase_Issue20_missing_closing_tag(string oldText, string newText, string expectedResult)
         {
-            // Arrange
             var diff = new HtmlDiff(oldText, newText);
-
-            string result = diff.Build();
-
-            // Assert
-            Expect(result)
-                 .To.Equal(expectedResult);
+            var result = diff.Build();
+            Expect(result).To.Equal(expectedResult);
         }
     }
 }

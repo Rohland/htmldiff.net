@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using static System.String;
 
 namespace HtmlDiff
 {
@@ -203,7 +204,7 @@ namespace HtmlDiff
         {
             var result =
                 _newWords.Where((s, pos) => pos >= operation.StartInNew && pos < operation.EndInNew).ToArray();
-            _content.Append(String.Join("", result));
+            _content.Append(Join("", result));
         }
 
 
@@ -236,32 +237,33 @@ namespace HtmlDiff
                     break;
                 }
 
-                // nonTags contains all entries of words until first tag is found.
-                var nonTags = ExtractConsecutiveWords(words, x => !Utils.IsTag(x));
-
-                if (nonTags.Length != 0)
+                var allWordsUntilFirstTag = ExtractConsecutiveWords(words, x => !Utils.IsTag(x));
+                if (allWordsUntilFirstTag.Length > 0)
                 {
-                    var text = Utils.WrapText(string.Join("", nonTags), tag, cssClass);
-
+                    var text = Utils.WrapText(Join("", allWordsUntilFirstTag), tag, cssClass);
                     _content.Append(text);
                 }
 
-                // if words doesn't contain any tags, the insert operation is complete.
-                if (words.Count == 0)
+                var isInsertOpCompleted = words.Count == 0;
+                if (isInsertOpCompleted)
                 {
                     break;
                 }
 
                 // if there are still words left, they must start with a tag, but still can contain nonTag entries.
                 // e.g. </span></big>bar
-                // the remaining words need to be handled separately devided in a tagBlock, which definitely contains at least one word and a potentially existing second block which starts with a nonTag but may contain tags later on.
-                int IndexOfFirstNonTag = words.FindIndex(x => !Utils.IsTag(x));
+                // the remaining words need to be handled separately divided in a tagBlock, which definitely contains
+                // at least one word and a potentially existing second block which starts with a nonTag but may
+                // contain tags later on.
+                var indexOfFirstNonTag = words.FindIndex(x => !Utils.IsTag(x));
 
-                // if there are no nonTags, the whole block is a tagBlock and the indext of the last tag is the last index of the block.
+                // if there are no nonTags, the whole block is a tagBlock and the index of the last tag is the last index of the block.
                 // if there are nonTags, the index of the last tag is the index before the first nonTag.
-                int IndexLastTagInFirstTagBlock = (IndexOfFirstNonTag == -1) ? words.Count - 1 : IndexOfFirstNonTag - 1;
+                var IndexLastTagInFirstTagBlock = indexOfFirstNonTag == -1 
+                    ? words.Count - 1 
+                    : indexOfFirstNonTag - 1;
 
-                var specialCaseTagInjection = string.Empty;
+                var specialCaseTagInjection = Empty;
                 var specialCaseTagInjectionIsBefore = false;
 
                 // handle opening tag
@@ -279,7 +281,6 @@ namespace HtmlDiff
                         }
                     }
                 }
-
                 // handle closing tag
                 else if (_specialCaseClosingTags.ContainsKey(words[0]))
                 {
@@ -293,7 +294,8 @@ namespace HtmlDiff
                         specialCaseTagInjectionIsBefore = true;
                     }
 
-                    // if the tag has a corresponding opening tag, but they don't match, we need to push the opening tag back onto the stack
+                    // if the tag has a corresponding opening tag, but they don't match,
+                    // we need to push the opening tag back onto the stack
                     else if (hasOpeningTag)
                     {
                         _specialTagDiffStack.Push(openingTag);
@@ -317,35 +319,30 @@ namespace HtmlDiff
 
                 if (specialCaseTagInjectionIsBefore)
                 {
-                    _content.Append(specialCaseTagInjection + String.Join("", ExtractConsecutiveWords(words, Utils.IsTag)));
+                    _content.Append(specialCaseTagInjection + Join("", ExtractConsecutiveWords(words, Utils.IsTag)));
                 }
                 else
                 {
-                    _content.Append(String.Join("", ExtractConsecutiveWords(words, Utils.IsTag)) + specialCaseTagInjection);
+                    _content.Append(Join("", ExtractConsecutiveWords(words, Utils.IsTag)) + specialCaseTagInjection);
                 }
 
+                if (words.Count == 0) continue;
                 // if there are still words left, they must start with a nonTag and need to be handled in the next iteration.
-                if (words.Count != 0)
-                {
-                    InsertTag(tag, cssClass, words);
-                    break;
-                }
+                InsertTag(tag, cssClass, words);
+                break;
             }
         }
 
         private string[] ExtractConsecutiveWords(List<string> words, Func<string, bool> condition)
         {
             int? indexOfFirstTag = null;
-
             for (var i = 0; i < words.Count; i++)
             {
                 var word = words[i];
-
                 if (i == 0 && word == " ")
                 {
                     words[i] = "&nbsp;";
                 }
-
                 if (!condition(word))
                 {
                     indexOfFirstTag = i;

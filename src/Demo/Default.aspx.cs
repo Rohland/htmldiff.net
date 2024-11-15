@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Demo
 {
@@ -21,7 +16,11 @@ namespace Demo
                                 </table>
                                 Here is a number 2 32
                                 <br><br>
-                                This date: 1 Jan 2016 is about to change (note how it is treated as a block change!)";
+                                This date: 1 Jan 2016 is about to change (note how it is treated as a block change!)
+                                <div>
+                                    Here is some text with a few words ok? And this text is in a <strong>strong block</strong> right?
+                                </div>
+                    ";
 
             var newText = @"<p>This is some sample <strong>text to</strong> demonstrate the awesome capabilities of the <strong>HTML <u>diff</u> tool</strong>.</p><br/><br/>Extra spacing here that was not here before.
                                 <p>It is <i>based</i> on the Ruby implementation found <a title='Cool tooltip' href='http://github.com/myobie/htmldiff'>here</a>. Note how the link has a tooltip now and the HTML diff algorithm has preserved formatting.</p>
@@ -31,7 +30,11 @@ namespace Demo
                                 </table>
                                 Here is a number 2 <sup>32</sup>
                                 <br><br>
-                                This date: 22 Feb 2017 is about to change (note how it is treated as a block change!)";
+                                This date: 22 Feb 2017 is about to change (note how it is treated as a block change!)
+                                <div>
+                                    Here is some text with a few <strong>strong <big>big words</big></strong> ok? And this text is not in a strong block right?
+                                </div>
+                                ";
 
             var diffHelper = new HtmlDiff.HtmlDiff(oldText, newText);
             litOldText.Text = oldText;
