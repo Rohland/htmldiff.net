@@ -2,13 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45;net462</TargetFrameworks>
-    <PackageVersion>1.4.2</PackageVersion>
+    <PackageVersion>1.5.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>htmldiff.net</PackageId>
     <Authors>Rohland de Charmoy</Authors>
     <PackageProjectUrl>https://github.com/Rohland/htmldiff.net</PackageProjectUrl>
     <PackageReleaseNotes>
+      1.5.0 - addresses an issue with a missing closing tag after formatter tags
       1.4.2 - addresses an issue with text decoration (see https://github.com/Rohland/htmldiff.net/pull/59)
       1.4.1 - dependency updates + bug fix for custom block expressions
       1.4.0 - dotnet standard support
